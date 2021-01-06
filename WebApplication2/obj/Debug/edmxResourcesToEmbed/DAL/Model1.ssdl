@@ -1,0 +1,156 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="eTicaretDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="alisveriDetay">
+    <Key>
+      <PropertyRef Name="alisverisDetayId" />
+    </Key>
+    <Property Name="alisverisDetayId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="uyeId" Type="int" />
+    <Property Name="adres" Type="varchar" MaxLength="500" />
+    <Property Name="sehir" Type="varchar" MaxLength="500" />
+    <Property Name="cadde" Type="varchar" MaxLength="500" />
+    <Property Name="ulke" Type="varchar" MaxLength="500" />
+    <Property Name="postaKodu" Type="varchar" MaxLength="50" />
+    <Property Name="siparisId" Type="int" />
+    <Property Name="odenenMiktar" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="odemeTuru" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="kartStatuTable">
+    <Key>
+      <PropertyRef Name="kartStatuId" />
+    </Key>
+    <Property Name="kartStatuId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="kartStatu" Type="varchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="kartTable">
+    <Key>
+      <PropertyRef Name="kartId" />
+    </Key>
+    <Property Name="kartId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="urunId" Type="int" />
+    <Property Name="uyeId" Type="int" />
+    <Property Name="kartStatuId" Type="int" />
+  </EntityType>
+  <EntityType Name="kategoriTable">
+    <Key>
+      <PropertyRef Name="kategoriId" />
+    </Key>
+    <Property Name="kategoriId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="kategoriAdi" Type="varchar" MaxLength="500" />
+    <Property Name="isActive" Type="bit" />
+    <Property Name="isDelete" Type="bit" />
+  </EntityType>
+  <EntityType Name="rolTable">
+    <Key>
+      <PropertyRef Name="rolId" />
+    </Key>
+    <Property Name="rolId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="rolAdi" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="slideImageTable">
+    <Key>
+      <PropertyRef Name="slideId" />
+    </Key>
+    <Property Name="slideId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="slideTitle" Type="varchar" MaxLength="500" />
+    <Property Name="slideImage" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="urunTable">
+    <Key>
+      <PropertyRef Name="urunId" />
+    </Key>
+    <Property Name="urunId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="urunAdi" Type="varchar" MaxLength="500" />
+    <Property Name="kategoriId" Type="int" />
+    <Property Name="isActive" Type="bit" />
+    <Property Name="isDelete" Type="bit" />
+    <Property Name="eklenmeTarihi" Type="datetime" />
+    <Property Name="degisimTarihi" Type="datetime" />
+    <Property Name="aciklama" Type="varchar" MaxLength="500" />
+    <Property Name="urunResmi" Type="varchar(max)" />
+    <Property Name="ozellik" Type="bit" />
+    <Property Name="miktar" Type="int" />
+    <Property Name="fiyat" Type="decimal" Precision="18" Scale="0" />
+  </EntityType>
+  <EntityType Name="uyeRolu">
+    <Key>
+      <PropertyRef Name="uyeRoluId" />
+    </Key>
+    <Property Name="uyeRoluId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="uyeId" Type="int" />
+    <Property Name="rolId" Type="int" />
+  </EntityType>
+  <EntityType Name="uyeTable">
+    <Key>
+      <PropertyRef Name="uyeId" />
+    </Key>
+    <Property Name="uyeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="uyeAd" Type="varchar" MaxLength="200" />
+    <Property Name="uyeSoyad" Type="varchar" MaxLength="200" />
+    <Property Name="uyeEmail" Type="varchar" MaxLength="200" />
+    <Property Name="uyePass" Type="varchar" MaxLength="500" />
+    <Property Name="isActive" Type="bit" />
+    <Property Name="isDelete" Type="bit" />
+    <Property Name="uyelikTarihi" Type="datetime" />
+    <Property Name="uyelikDegismeTarihi" Type="datetime" />
+  </EntityType>
+  <Association Name="FK__alisveriD__uyeId__2E1BDC42">
+    <End Role="uyeTable" Type="Self.uyeTable" Multiplicity="0..1" />
+    <End Role="alisveriDetay" Type="Self.alisveriDetay" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="uyeTable">
+        <PropertyRef Name="uyeId" />
+      </Principal>
+      <Dependent Role="alisveriDetay">
+        <PropertyRef Name="uyeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__kartTable__urunI__32E0915F">
+    <End Role="urunTable" Type="Self.urunTable" Multiplicity="0..1" />
+    <End Role="kartTable" Type="Self.kartTable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="urunTable">
+        <PropertyRef Name="urunId" />
+      </Principal>
+      <Dependent Role="kartTable">
+        <PropertyRef Name="urunId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__urunTable__kateg__267ABA7A">
+    <End Role="kategoriTable" Type="Self.kategoriTable" Multiplicity="0..1" />
+    <End Role="urunTable" Type="Self.urunTable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="kategoriTable">
+        <PropertyRef Name="kategoriId" />
+      </Principal>
+      <Dependent Role="urunTable">
+        <PropertyRef Name="kategoriId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="eTicaretDbModelStoreContainer">
+    <EntitySet Name="alisveriDetay" EntityType="Self.alisveriDetay" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="kartStatuTable" EntityType="Self.kartStatuTable" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="kartTable" EntityType="Self.kartTable" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="kategoriTable" EntityType="Self.kategoriTable" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="rolTable" EntityType="Self.rolTable" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="slideImageTable" EntityType="Self.slideImageTable" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="urunTable" EntityType="Self.urunTable" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="uyeRolu" EntityType="Self.uyeRolu" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="uyeTable" EntityType="Self.uyeTable" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__alisveriD__uyeId__2E1BDC42" Association="Self.FK__alisveriD__uyeId__2E1BDC42">
+      <End Role="uyeTable" EntitySet="uyeTable" />
+      <End Role="alisveriDetay" EntitySet="alisveriDetay" />
+    </AssociationSet>
+    <AssociationSet Name="FK__kartTable__urunI__32E0915F" Association="Self.FK__kartTable__urunI__32E0915F">
+      <End Role="urunTable" EntitySet="urunTable" />
+      <End Role="kartTable" EntitySet="kartTable" />
+    </AssociationSet>
+    <AssociationSet Name="FK__urunTable__kateg__267ABA7A" Association="Self.FK__urunTable__kateg__267ABA7A">
+      <End Role="kategoriTable" EntitySet="kategoriTable" />
+      <End Role="urunTable" EntitySet="urunTable" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

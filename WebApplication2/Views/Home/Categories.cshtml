@@ -1,0 +1,107 @@
+﻿@model WebApplication2.Models.Home.HomeKategorilerViewModel
+
+@using PagedList;
+
+@using PagedList.Mvc;
+
+@{
+    ViewBag.Title = "Categories";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .product-container {
+        position:relative;
+    }
+    .product-item .caption h5 {
+        font-weight: 600;
+        font-size: 16px;
+        font-style:italic;
+        line-height: 20px;
+        border-top: 2px solid #333;
+        margin-top:10px;
+        padding-top: 10px;
+    }
+    .product-item .caption .product-item-price {
+        font-size:14px;
+        line-height:16px;
+        font-weight: 400;
+    }
+    .product-item .product-item-badge {
+        position: absolute;
+        top: 4px;
+        left: 4px;
+        padding: 5px 12px 6px;
+        color: #fff;
+        font-size: 12px;
+        line-height: 14px;
+        font-weight: 600;
+        background: #333;
+        -webkit-border-radius: 4px 0 4px 0;
+            -moz-border-radius: 4px 0 4px 0;
+                    border-radius: 4px 0 4px 0;
+    }
+</style>
+<header class="masthead1">
+    <div class="container h-100">
+    </div>
+</header>
+
+<div class="olContent f1"><h2 style="color:black;">Ürün veya kategori ara</h2></div>
+<form method="post">
+    <div class="olSearch fr">
+        <input type="text" name="search" placeholder="Buraya Giriniz"  class="inputCom form-control" />
+        <div class="searchIcon">
+            <button type="submit" class="search-btn">
+                <img src="../Content/images/searchIcon.png" />
+            </button>
+        </div>
+    </div>
+</form>
+
+<div class="row product-container">
+    @foreach (var item in Model.ListOfUrun)
+    {
+        <div class="col-md-3 col-sm-3 col-sx-6" style="margin-bottom:8px;">
+            <div class="thumbnail product-item" style="height:300px;">
+                <img class="img-responsive" title="ürün detayı için tıkla" style="cursor:pointer; align-content:center; height:300px; width:auto;" src="../UrunImage/@item.urunResmi" />
+                <div class="caption">
+                    <h5>@item.urunAdi</h5>
+                    <p>@item.fiyat</p>
+                    <p>
+                        @if (item.miktar > 0)
+                        {
+                            using (Html.BeginForm("AddtoCart", "Home", new { urunid = item.urunId }, FormMethod.Post))
+                            {
+                                <button type="submit" class="pull-right"><i class="fa fa-shopping-cart"></i></button>
+                            }
+
+                            <p>Available</p>
+                        }
+                        else
+                        {
+                            <p>not available </p>
+                        }
+
+                    </p>
+                <div class="product-item-badge">
+                    @if (item.ozellik == true)
+                    {
+                        <p>New</p>
+                    }
+                    else
+                    {
+                        <p>old</p>
+                    }
+                </div>
+                    
+                </div>
+            </div>
+        </div>
+    }    
+</div>
+
+<div class="container">
+    <br />
+    @Html.PagedListPager(Model.ListOfUrun, page => Url.Action("Categories", new { page, search = Request.QueryString["search"] }))
+</div>
+

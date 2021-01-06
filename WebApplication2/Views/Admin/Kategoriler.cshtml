@@ -1,0 +1,53 @@
+﻿@model List<WebApplication2.DAL.kategoriTable>    
+
+
+@{
+    ViewBag.Title = "Kategoriler";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Tables</h1>
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <i class="fas fa-table"></i>
+            Kategoriler
+            <a href="../Admin/AddKategori" class="btn btn-info pull-right">Yeni kategori ekle</a>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>İd</th>
+                            <th>Kategori Adı</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th>İd</th>
+                            <th>Kategori Adı</th>
+                            <th>Action</th>
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@(Model.IndexOf(item)+1)</td>
+                                <td>@item.kategoriAdi</td>
+                                <td>@Html.ActionLink("Duzenle", "kategoriDuzenle", new { katid = item.kategoriId })</td>
+                            </tr>
+                        }                       
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+

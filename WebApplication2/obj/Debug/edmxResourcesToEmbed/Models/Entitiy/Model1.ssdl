@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="urunDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="adminTable">
+    <Key>
+      <PropertyRef Name="adminID" />
+    </Key>
+    <Property Name="adminID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="adminEmail" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="adminPass" Type="varchar" MaxLength="200" Nullable="false" />
+  </EntityType>
+  <EntityType Name="altGiyimTable">
+    <Key>
+      <PropertyRef Name="id2" />
+    </Key>
+    <Property Name="id2" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="marka2" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="beden2" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="renk2" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="stil2" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="belTipi2" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="pacaTipi2" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="boy2" Type="varchar" MaxLength="200" Nullable="false" />
+  </EntityType>
+  <EntityType Name="elbiseTable">
+    <Key>
+      <PropertyRef Name="id3" />
+    </Key>
+    <Property Name="id3" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="marka3" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="beden3" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="renk3" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="stil3" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="boy3" Type="varchar" MaxLength="200" Nullable="false" />
+  </EntityType>
+  <EntityType Name="kullaniciTable">
+    <Key>
+      <PropertyRef Name="userID" />
+    </Key>
+    <Property Name="userID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="userEmail" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="userPass" Type="varchar" MaxLength="200" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ustGiyimTable">
+    <Key>
+      <PropertyRef Name="id1" />
+    </Key>
+    <Property Name="id1" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="marka1" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="beden1" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="renk1" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="stil1" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="yaka1" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="kolTipi1" Type="varchar" MaxLength="200" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="urunDBModelStoreContainer">
+    <EntitySet Name="adminTable" EntityType="Self.adminTable" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="altGiyimTable" EntityType="Self.altGiyimTable" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="elbiseTable" EntityType="Self.elbiseTable" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="kullaniciTable" EntityType="Self.kullaniciTable" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ustGiyimTable" EntityType="Self.ustGiyimTable" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

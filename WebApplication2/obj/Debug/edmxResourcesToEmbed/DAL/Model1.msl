@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="eTicaretDbModelStoreContainer" CdmEntityContainer="eTicaretDbEntities1">
+    <EntitySetMapping Name="alisveriDetays">
+      <EntityTypeMapping TypeName="eTicaretDbModel.alisveriDetay">
+        <MappingFragment StoreEntitySet="alisveriDetay">
+          <ScalarProperty Name="alisverisDetayId" ColumnName="alisverisDetayId" />
+          <ScalarProperty Name="uyeId" ColumnName="uyeId" />
+          <ScalarProperty Name="adres" ColumnName="adres" />
+          <ScalarProperty Name="sehir" ColumnName="sehir" />
+          <ScalarProperty Name="cadde" ColumnName="cadde" />
+          <ScalarProperty Name="ulke" ColumnName="ulke" />
+          <ScalarProperty Name="postaKodu" ColumnName="postaKodu" />
+          <ScalarProperty Name="siparisId" ColumnName="siparisId" />
+          <ScalarProperty Name="odenenMiktar" ColumnName="odenenMiktar" />
+          <ScalarProperty Name="odemeTuru" ColumnName="odemeTuru" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="kartStatuTables">
+      <EntityTypeMapping TypeName="eTicaretDbModel.kartStatuTable">
+        <MappingFragment StoreEntitySet="kartStatuTable">
+          <ScalarProperty Name="kartStatuId" ColumnName="kartStatuId" />
+          <ScalarProperty Name="kartStatu" ColumnName="kartStatu" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="kartTables">
+      <EntityTypeMapping TypeName="eTicaretDbModel.kartTable">
+        <MappingFragment StoreEntitySet="kartTable">
+          <ScalarProperty Name="kartId" ColumnName="kartId" />
+          <ScalarProperty Name="urunId" ColumnName="urunId" />
+          <ScalarProperty Name="uyeId" ColumnName="uyeId" />
+          <ScalarProperty Name="kartStatuId" ColumnName="kartStatuId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="kategoriTables">
+      <EntityTypeMapping TypeName="eTicaretDbModel.kategoriTable">
+        <MappingFragment StoreEntitySet="kategoriTable">
+          <ScalarProperty Name="kategoriId" ColumnName="kategoriId" />
+          <ScalarProperty Name="kategoriAdi" ColumnName="kategoriAdi" />
+          <ScalarProperty Name="isActive" ColumnName="isActive" />
+          <ScalarProperty Name="isDelete" ColumnName="isDelete" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="rolTables">
+      <EntityTypeMapping TypeName="eTicaretDbModel.rolTable">
+        <MappingFragment StoreEntitySet="rolTable">
+          <ScalarProperty Name="rolId" ColumnName="rolId" />
+          <ScalarProperty Name="rolAdi" ColumnName="rolAdi" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="slideImageTables">
+      <EntityTypeMapping TypeName="eTicaretDbModel.slideImageTable">
+        <MappingFragment StoreEntitySet="slideImageTable">
+          <ScalarProperty Name="slideId" ColumnName="slideId" />
+          <ScalarProperty Name="slideTitle" ColumnName="slideTitle" />
+          <ScalarProperty Name="slideImage" ColumnName="slideImage" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="uyeRolus">
+      <EntityTypeMapping TypeName="eTicaretDbModel.uyeRolu">
+        <MappingFragment StoreEntitySet="uyeRolu">
+          <ScalarProperty Name="uyeRoluId" ColumnName="uyeRoluId" />
+          <ScalarProperty Name="uyeId" ColumnName="uyeId" />
+          <ScalarProperty Name="rolId" ColumnName="rolId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="uyeTables">
+      <EntityTypeMapping TypeName="eTicaretDbModel.uyeTable">
+        <MappingFragment StoreEntitySet="uyeTable">
+          <ScalarProperty Name="uyeId" ColumnName="uyeId" />
+          <ScalarProperty Name="uyeAd" ColumnName="uyeAd" />
+          <ScalarProperty Name="uyeSoyad" ColumnName="uyeSoyad" />
+          <ScalarProperty Name="uyeEmail" ColumnName="uyeEmail" />
+          <ScalarProperty Name="uyePass" ColumnName="uyePass" />
+          <ScalarProperty Name="isActive" ColumnName="isActive" />
+          <ScalarProperty Name="isDelete" ColumnName="isDelete" />
+          <ScalarProperty Name="uyelikTarihi" ColumnName="uyelikTarihi" />
+          <ScalarProperty Name="uyelikDegismeTarihi" ColumnName="uyelikDegismeTarihi" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="urunTables">
+      <EntityTypeMapping TypeName="eTicaretDbModel.urunTable">
+        <MappingFragment StoreEntitySet="urunTable">
+          <ScalarProperty Name="fiyat" ColumnName="fiyat" />
+          <ScalarProperty Name="miktar" ColumnName="miktar" />
+          <ScalarProperty Name="ozellik" ColumnName="ozellik" />
+          <ScalarProperty Name="urunResmi" ColumnName="urunResmi" />
+          <ScalarProperty Name="aciklama" ColumnName="aciklama" />
+          <ScalarProperty Name="degisimTarihi" ColumnName="degisimTarihi" />
+          <ScalarProperty Name="eklenmeTarihi" ColumnName="eklenmeTarihi" />
+          <ScalarProperty Name="isDelete" ColumnName="isDelete" />
+          <ScalarProperty Name="isActive" ColumnName="isActive" />
+          <ScalarProperty Name="kategoriId" ColumnName="kategoriId" />
+          <ScalarProperty Name="urunAdi" ColumnName="urunAdi" />
+          <ScalarProperty Name="urunId" ColumnName="urunId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

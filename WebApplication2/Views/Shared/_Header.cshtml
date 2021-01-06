@@ -1,0 +1,31 @@
+﻿@using WebApplication2.Models.Home
+
+<nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
+    <div class="container">
+        <a class="navbar-brand js-scroll-trigger" href="../Home/Index">PEMBE FİL</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto my-2 my-lg-0">
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="../Home/Categories">Kategoriler</a></li>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#about">Hakkımızda</a></li>
+                <li class="nav-item dropdown">
+                    <a data-toggle="dropdown" class="nav-link js-scroll-trigger dropdown-toggle" href="#"> <img src="../Content/images/basket.png" /></a>
+                    <ul class="dropdown-menu">
+                        @if (Session["cart"] != null)
+                        {
+                            foreach (var item in (List<Item>)Session["cart"])
+                            {
+                                <li><a href="@Url.Action("RemoveFromCart","Home", new {urunid =item.urun.urunId })">@item.urun.urunAdi (@item.miktar)<i class="fa fa-times"></i> </a></li>
+                            }
+                            <li><a href="@Url.Action("Checkout","Home")">Checkout</a></li>
+                        }
+
+                    </ul>
+                </li>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="../Guvenlik/GirisYap"> <img src="../Content/images/user.png" /></a></li>
+
+            </ul>
+        </div>
+    </div>
+</nav>
+<!-- Masthead-->

@@ -1,0 +1,456 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="eTicaretDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="alisveriDetay">
+          <Key>
+            <PropertyRef Name="alisverisDetayId" />
+          </Key>
+          <Property Name="alisverisDetayId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="uyeId" Type="int" />
+          <Property Name="adres" Type="varchar" MaxLength="500" />
+          <Property Name="sehir" Type="varchar" MaxLength="500" />
+          <Property Name="cadde" Type="varchar" MaxLength="500" />
+          <Property Name="ulke" Type="varchar" MaxLength="500" />
+          <Property Name="postaKodu" Type="varchar" MaxLength="50" />
+          <Property Name="siparisId" Type="int" />
+          <Property Name="odenenMiktar" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="odemeTuru" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="kartStatuTable">
+          <Key>
+            <PropertyRef Name="kartStatuId" />
+          </Key>
+          <Property Name="kartStatuId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="kartStatu" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="kartTable">
+          <Key>
+            <PropertyRef Name="kartId" />
+          </Key>
+          <Property Name="kartId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="urunId" Type="int" />
+          <Property Name="uyeId" Type="int" />
+          <Property Name="kartStatuId" Type="int" />
+        </EntityType>
+        <EntityType Name="kategoriTable">
+          <Key>
+            <PropertyRef Name="kategoriId" />
+          </Key>
+          <Property Name="kategoriId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="kategoriAdi" Type="varchar" MaxLength="500" />
+          <Property Name="isActive" Type="bit" />
+          <Property Name="isDelete" Type="bit" />
+        </EntityType>
+        <EntityType Name="rolTable">
+          <Key>
+            <PropertyRef Name="rolId" />
+          </Key>
+          <Property Name="rolId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="rolAdi" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="slideImageTable">
+          <Key>
+            <PropertyRef Name="slideId" />
+          </Key>
+          <Property Name="slideId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="slideTitle" Type="varchar" MaxLength="500" />
+          <Property Name="slideImage" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="urunTable">
+          <Key>
+            <PropertyRef Name="urunId" />
+          </Key>
+          <Property Name="urunId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="urunAdi" Type="varchar" MaxLength="500" />
+          <Property Name="kategoriId" Type="int" />
+          <Property Name="isActive" Type="bit" />
+          <Property Name="isDelete" Type="bit" />
+          <Property Name="eklenmeTarihi" Type="datetime" />
+          <Property Name="degisimTarihi" Type="datetime" />
+          <Property Name="aciklama" Type="varchar" MaxLength="500" />
+          <Property Name="urunResmi" Type="varchar(max)" />
+          <Property Name="ozellik" Type="bit" />
+          <Property Name="miktar" Type="int" />
+          <Property Name="fiyat" Type="decimal" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="uyeRolu">
+          <Key>
+            <PropertyRef Name="uyeRoluId" />
+          </Key>
+          <Property Name="uyeRoluId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="uyeId" Type="int" />
+          <Property Name="rolId" Type="int" />
+        </EntityType>
+        <EntityType Name="uyeTable">
+          <Key>
+            <PropertyRef Name="uyeId" />
+          </Key>
+          <Property Name="uyeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="uyeAd" Type="varchar" MaxLength="200" />
+          <Property Name="uyeSoyad" Type="varchar" MaxLength="200" />
+          <Property Name="uyeEmail" Type="varchar" MaxLength="200" />
+          <Property Name="uyePass" Type="varchar" MaxLength="500" />
+          <Property Name="isActive" Type="bit" />
+          <Property Name="isDelete" Type="bit" />
+          <Property Name="uyelikTarihi" Type="datetime" />
+          <Property Name="uyelikDegismeTarihi" Type="datetime" />
+        </EntityType>
+        <Association Name="FK__alisveriD__uyeId__2E1BDC42">
+          <End Role="uyeTable" Type="Self.uyeTable" Multiplicity="0..1" />
+          <End Role="alisveriDetay" Type="Self.alisveriDetay" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="uyeTable">
+              <PropertyRef Name="uyeId" />
+            </Principal>
+            <Dependent Role="alisveriDetay">
+              <PropertyRef Name="uyeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__kartTable__urunI__32E0915F">
+          <End Role="urunTable" Type="Self.urunTable" Multiplicity="0..1" />
+          <End Role="kartTable" Type="Self.kartTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="urunTable">
+              <PropertyRef Name="urunId" />
+            </Principal>
+            <Dependent Role="kartTable">
+              <PropertyRef Name="urunId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__urunTable__kateg__267ABA7A">
+          <End Role="kategoriTable" Type="Self.kategoriTable" Multiplicity="0..1" />
+          <End Role="urunTable" Type="Self.urunTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="kategoriTable">
+              <PropertyRef Name="kategoriId" />
+            </Principal>
+            <Dependent Role="urunTable">
+              <PropertyRef Name="kategoriId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="eTicaretDbModelStoreContainer">
+          <EntitySet Name="alisveriDetay" EntityType="Self.alisveriDetay" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="kartStatuTable" EntityType="Self.kartStatuTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="kartTable" EntityType="Self.kartTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="kategoriTable" EntityType="Self.kategoriTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="rolTable" EntityType="Self.rolTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="slideImageTable" EntityType="Self.slideImageTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="urunTable" EntityType="Self.urunTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="uyeRolu" EntityType="Self.uyeRolu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="uyeTable" EntityType="Self.uyeTable" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__alisveriD__uyeId__2E1BDC42" Association="Self.FK__alisveriD__uyeId__2E1BDC42">
+            <End Role="uyeTable" EntitySet="uyeTable" />
+            <End Role="alisveriDetay" EntitySet="alisveriDetay" />
+          </AssociationSet>
+          <AssociationSet Name="FK__kartTable__urunI__32E0915F" Association="Self.FK__kartTable__urunI__32E0915F">
+            <End Role="urunTable" EntitySet="urunTable" />
+            <End Role="kartTable" EntitySet="kartTable" />
+          </AssociationSet>
+          <AssociationSet Name="FK__urunTable__kateg__267ABA7A" Association="Self.FK__urunTable__kateg__267ABA7A">
+            <End Role="kategoriTable" EntitySet="kategoriTable" />
+            <End Role="urunTable" EntitySet="urunTable" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="eTicaretDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="alisveriDetay">
+          <Key>
+            <PropertyRef Name="alisverisDetayId" />
+          </Key>
+          <Property Name="alisverisDetayId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="uyeId" Type="Int32" />
+          <Property Name="adres" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="sehir" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="cadde" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="ulke" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="postaKodu" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="siparisId" Type="Int32" />
+          <Property Name="odenenMiktar" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="odemeTuru" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="uyeTable" Relationship="Self.FK__alisveriD__uyeId__2E1BDC42" FromRole="alisveriDetay" ToRole="uyeTable" />
+        </EntityType>
+        <EntityType Name="kartStatuTable">
+          <Key>
+            <PropertyRef Name="kartStatuId" />
+          </Key>
+          <Property Name="kartStatuId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="kartStatu" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="kartTable">
+          <Key>
+            <PropertyRef Name="kartId" />
+          </Key>
+          <Property Name="kartId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="urunId" Type="Int32" />
+          <Property Name="uyeId" Type="Int32" />
+          <Property Name="kartStatuId" Type="Int32" />
+          <NavigationProperty Name="urunTable" Relationship="eTicaretDbModel.FK__kartTable__urunI__32E0915F" FromRole="kartTable" ToRole="urunTable" />
+        </EntityType>
+        <EntityType Name="kategoriTable">
+          <Key>
+            <PropertyRef Name="kategoriId" />
+          </Key>
+          <Property Name="kategoriId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="kategoriAdi" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="isActive" Type="Boolean" />
+          <Property Name="isDelete" Type="Boolean" />
+          <NavigationProperty Name="urunTables" Relationship="eTicaretDbModel.FK__urunTable__kateg__267ABA7A" FromRole="kategoriTable" ToRole="urunTable" />
+        </EntityType>
+        <EntityType Name="rolTable">
+          <Key>
+            <PropertyRef Name="rolId" />
+          </Key>
+          <Property Name="rolId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="rolAdi" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="slideImageTable">
+          <Key>
+            <PropertyRef Name="slideId" />
+          </Key>
+          <Property Name="slideId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="slideTitle" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="slideImage" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="uyeRolu">
+          <Key>
+            <PropertyRef Name="uyeRoluId" />
+          </Key>
+          <Property Name="uyeRoluId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="uyeId" Type="Int32" />
+          <Property Name="rolId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="uyeTable">
+          <Key>
+            <PropertyRef Name="uyeId" />
+          </Key>
+          <Property Name="uyeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="uyeAd" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="uyeSoyad" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="uyeEmail" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="uyePass" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="isActive" Type="Boolean" />
+          <Property Name="isDelete" Type="Boolean" />
+          <Property Name="uyelikTarihi" Type="DateTime" Precision="3" />
+          <Property Name="uyelikDegismeTarihi" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="alisveriDetays" Relationship="Self.FK__alisveriD__uyeId__2E1BDC42" FromRole="uyeTable" ToRole="alisveriDetay" />
+        </EntityType>
+        <Association Name="FK__alisveriD__uyeId__2E1BDC42">
+          <End Role="uyeTable" Type="Self.uyeTable" Multiplicity="0..1" />
+          <End Role="alisveriDetay" Type="Self.alisveriDetay" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="uyeTable">
+              <PropertyRef Name="uyeId" />
+            </Principal>
+            <Dependent Role="alisveriDetay">
+              <PropertyRef Name="uyeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="eTicaretDbEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="alisveriDetays" EntityType="Self.alisveriDetay" />
+          <EntitySet Name="kartStatuTables" EntityType="Self.kartStatuTable" />
+          <EntitySet Name="kartTables" EntityType="Self.kartTable" />
+          <EntitySet Name="kategoriTables" EntityType="Self.kategoriTable" />
+          <EntitySet Name="rolTables" EntityType="Self.rolTable" />
+          <EntitySet Name="slideImageTables" EntityType="Self.slideImageTable" />
+          <EntitySet Name="uyeRolus" EntityType="Self.uyeRolu" />
+          <EntitySet Name="uyeTables" EntityType="Self.uyeTable" />
+          <AssociationSet Name="FK__alisveriD__uyeId__2E1BDC42" Association="Self.FK__alisveriD__uyeId__2E1BDC42">
+            <End Role="uyeTable" EntitySet="uyeTables" />
+            <End Role="alisveriDetay" EntitySet="alisveriDetays" />
+          </AssociationSet>
+          <EntitySet Name="urunTables" EntityType="eTicaretDbModel.urunTable" />
+          <AssociationSet Name="FK__kartTable__urunI__32E0915F" Association="eTicaretDbModel.FK__kartTable__urunI__32E0915F">
+            <End Role="urunTable" EntitySet="urunTables" />
+            <End Role="kartTable" EntitySet="kartTables" />
+          </AssociationSet>
+          <AssociationSet Name="FK__urunTable__kateg__267ABA7A" Association="eTicaretDbModel.FK__urunTable__kateg__267ABA7A">
+            <End Role="kategoriTable" EntitySet="kategoriTables" />
+            <End Role="urunTable" EntitySet="urunTables" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="urunTable">
+          <Key>
+            <PropertyRef Name="urunId" />
+          </Key>
+          <Property Name="urunId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="urunAdi" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="kategoriId" Type="Int32" />
+          <Property Name="isActive" Type="Boolean" />
+          <Property Name="isDelete" Type="Boolean" />
+          <Property Name="eklenmeTarihi" Type="DateTime" Precision="3" />
+          <Property Name="degisimTarihi" Type="DateTime" Precision="3" />
+          <Property Name="aciklama" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="urunResmi" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ozellik" Type="Boolean" />
+          <Property Name="miktar" Type="Int32" />
+          <Property Name="fiyat" Type="Decimal" Precision="18" Scale="0" />
+          <NavigationProperty Name="kartTables" Relationship="eTicaretDbModel.FK__kartTable__urunI__32E0915F" FromRole="urunTable" ToRole="kartTable" />
+          <NavigationProperty Name="kategoriTable" Relationship="eTicaretDbModel.FK__urunTable__kateg__267ABA7A" FromRole="urunTable" ToRole="kategoriTable" />
+        </EntityType>
+        <Association Name="FK__kartTable__urunI__32E0915F">
+          <End Type="eTicaretDbModel.urunTable" Role="urunTable" Multiplicity="0..1" />
+          <End Type="eTicaretDbModel.kartTable" Role="kartTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="urunTable">
+              <PropertyRef Name="urunId" />
+            </Principal>
+            <Dependent Role="kartTable">
+              <PropertyRef Name="urunId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__urunTable__kateg__267ABA7A">
+          <End Type="eTicaretDbModel.kategoriTable" Role="kategoriTable" Multiplicity="0..1" />
+          <End Type="eTicaretDbModel.urunTable" Role="urunTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="kategoriTable">
+              <PropertyRef Name="kategoriId" />
+            </Principal>
+            <Dependent Role="urunTable">
+              <PropertyRef Name="kategoriId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="eTicaretDbModelStoreContainer" CdmEntityContainer="eTicaretDbEntities1">
+          <EntitySetMapping Name="alisveriDetays">
+            <EntityTypeMapping TypeName="eTicaretDbModel.alisveriDetay">
+              <MappingFragment StoreEntitySet="alisveriDetay">
+                <ScalarProperty Name="alisverisDetayId" ColumnName="alisverisDetayId" />
+                <ScalarProperty Name="uyeId" ColumnName="uyeId" />
+                <ScalarProperty Name="adres" ColumnName="adres" />
+                <ScalarProperty Name="sehir" ColumnName="sehir" />
+                <ScalarProperty Name="cadde" ColumnName="cadde" />
+                <ScalarProperty Name="ulke" ColumnName="ulke" />
+                <ScalarProperty Name="postaKodu" ColumnName="postaKodu" />
+                <ScalarProperty Name="siparisId" ColumnName="siparisId" />
+                <ScalarProperty Name="odenenMiktar" ColumnName="odenenMiktar" />
+                <ScalarProperty Name="odemeTuru" ColumnName="odemeTuru" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="kartStatuTables">
+            <EntityTypeMapping TypeName="eTicaretDbModel.kartStatuTable">
+              <MappingFragment StoreEntitySet="kartStatuTable">
+                <ScalarProperty Name="kartStatuId" ColumnName="kartStatuId" />
+                <ScalarProperty Name="kartStatu" ColumnName="kartStatu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="kartTables">
+            <EntityTypeMapping TypeName="eTicaretDbModel.kartTable">
+              <MappingFragment StoreEntitySet="kartTable">
+                <ScalarProperty Name="kartId" ColumnName="kartId" />
+                <ScalarProperty Name="urunId" ColumnName="urunId" />
+                <ScalarProperty Name="uyeId" ColumnName="uyeId" />
+                <ScalarProperty Name="kartStatuId" ColumnName="kartStatuId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="kategoriTables">
+            <EntityTypeMapping TypeName="eTicaretDbModel.kategoriTable">
+              <MappingFragment StoreEntitySet="kategoriTable">
+                <ScalarProperty Name="kategoriId" ColumnName="kategoriId" />
+                <ScalarProperty Name="kategoriAdi" ColumnName="kategoriAdi" />
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
+                <ScalarProperty Name="isDelete" ColumnName="isDelete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="rolTables">
+            <EntityTypeMapping TypeName="eTicaretDbModel.rolTable">
+              <MappingFragment StoreEntitySet="rolTable">
+                <ScalarProperty Name="rolId" ColumnName="rolId" />
+                <ScalarProperty Name="rolAdi" ColumnName="rolAdi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="slideImageTables">
+            <EntityTypeMapping TypeName="eTicaretDbModel.slideImageTable">
+              <MappingFragment StoreEntitySet="slideImageTable">
+                <ScalarProperty Name="slideId" ColumnName="slideId" />
+                <ScalarProperty Name="slideTitle" ColumnName="slideTitle" />
+                <ScalarProperty Name="slideImage" ColumnName="slideImage" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="uyeRolus">
+            <EntityTypeMapping TypeName="eTicaretDbModel.uyeRolu">
+              <MappingFragment StoreEntitySet="uyeRolu">
+                <ScalarProperty Name="uyeRoluId" ColumnName="uyeRoluId" />
+                <ScalarProperty Name="uyeId" ColumnName="uyeId" />
+                <ScalarProperty Name="rolId" ColumnName="rolId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="uyeTables">
+            <EntityTypeMapping TypeName="eTicaretDbModel.uyeTable">
+              <MappingFragment StoreEntitySet="uyeTable">
+                <ScalarProperty Name="uyeId" ColumnName="uyeId" />
+                <ScalarProperty Name="uyeAd" ColumnName="uyeAd" />
+                <ScalarProperty Name="uyeSoyad" ColumnName="uyeSoyad" />
+                <ScalarProperty Name="uyeEmail" ColumnName="uyeEmail" />
+                <ScalarProperty Name="uyePass" ColumnName="uyePass" />
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
+                <ScalarProperty Name="isDelete" ColumnName="isDelete" />
+                <ScalarProperty Name="uyelikTarihi" ColumnName="uyelikTarihi" />
+                <ScalarProperty Name="uyelikDegismeTarihi" ColumnName="uyelikDegismeTarihi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="urunTables">
+            <EntityTypeMapping TypeName="eTicaretDbModel.urunTable">
+              <MappingFragment StoreEntitySet="urunTable">
+                <ScalarProperty Name="fiyat" ColumnName="fiyat" />
+                <ScalarProperty Name="miktar" ColumnName="miktar" />
+                <ScalarProperty Name="ozellik" ColumnName="ozellik" />
+                <ScalarProperty Name="urunResmi" ColumnName="urunResmi" />
+                <ScalarProperty Name="aciklama" ColumnName="aciklama" />
+                <ScalarProperty Name="degisimTarihi" ColumnName="degisimTarihi" />
+                <ScalarProperty Name="eklenmeTarihi" ColumnName="eklenmeTarihi" />
+                <ScalarProperty Name="isDelete" ColumnName="isDelete" />
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
+                <ScalarProperty Name="kategoriId" ColumnName="kategoriId" />
+                <ScalarProperty Name="urunAdi" ColumnName="urunAdi" />
+                <ScalarProperty Name="urunId" ColumnName="urunId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

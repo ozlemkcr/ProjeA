@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ecomModelStoreContainer" CdmEntityContainer="ecomEntities">
+    <EntitySetMapping Name="admin">
+      <EntityTypeMapping TypeName="ecomModel.admin">
+        <MappingFragment StoreEntitySet="admin">
+          <ScalarProperty Name="adminID" ColumnName="adminID" />
+          <ScalarProperty Name="adminEmail" ColumnName="adminEmail" />
+          <ScalarProperty Name="adminSifre" ColumnName="adminSifre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="altgiyim">
+      <EntityTypeMapping TypeName="ecomModel.altgiyim">
+        <MappingFragment StoreEntitySet="altgiyim">
+          <ScalarProperty Name="id2" ColumnName="id2" />
+          <ScalarProperty Name="marka2" ColumnName="marka2" />
+          <ScalarProperty Name="beden2" ColumnName="beden2" />
+          <ScalarProperty Name="renk2" ColumnName="renk2" />
+          <ScalarProperty Name="stil2" ColumnName="stil2" />
+          <ScalarProperty Name="pacaTipi2" ColumnName="pacaTipi2" />
+          <ScalarProperty Name="belTipi2" ColumnName="belTipi2" />
+          <ScalarProperty Name="boy2" ColumnName="boy2" />
+          <ScalarProperty Name="cesit2" ColumnName="cesit2" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="elbiseortulum">
+      <EntityTypeMapping TypeName="ecomModel.elbiseortulum">
+        <MappingFragment StoreEntitySet="elbiseortulum">
+          <ScalarProperty Name="id3" ColumnName="id3" />
+          <ScalarProperty Name="marka3" ColumnName="marka3" />
+          <ScalarProperty Name="beden3" ColumnName="beden3" />
+          <ScalarProperty Name="renk3" ColumnName="renk3" />
+          <ScalarProperty Name="stil3" ColumnName="stil3" />
+          <ScalarProperty Name="boy3" ColumnName="boy3" />
+          <ScalarProperty Name="cesit3" ColumnName="cesit3" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="kullanici">
+      <EntityTypeMapping TypeName="ecomModel.kullanici">
+        <MappingFragment StoreEntitySet="kullanici">
+          <ScalarProperty Name="kullaniciID" ColumnName="kullaniciID" />
+          <ScalarProperty Name="kullanıcıEmail" ColumnName="kullanıcıEmail" />
+          <ScalarProperty Name="kullanıcıSifre" ColumnName="kullanıcıSifre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ustgiyim">
+      <EntityTypeMapping TypeName="ecomModel.ustgiyim">
+        <MappingFragment StoreEntitySet="ustgiyim">
+          <ScalarProperty Name="id1" ColumnName="id1" />
+          <ScalarProperty Name="marka1" ColumnName="marka1" />
+          <ScalarProperty Name="beden1" ColumnName="beden1" />
+          <ScalarProperty Name="renk1" ColumnName="renk1" />
+          <ScalarProperty Name="stil1" ColumnName="stil1" />
+          <ScalarProperty Name="yaka1" ColumnName="yaka1" />
+          <ScalarProperty Name="kolTipi1" ColumnName="kolTipi1" />
+          <ScalarProperty Name="cesit1" ColumnName="cesit1" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,47 @@
+﻿@model IEnumerable<WebApplication2.DAL.urunTable>
+
+@{
+    ViewBag.Title = "Urun";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <i class="fas fa-table"></i>
+        Ürünler
+        <a href="../Admin/UrunEkle" class="btn btn-info pull-right">Yeni kategori ekle</a>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>İd</th>
+                        <th>Ürün Adı</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>İd</th>
+                        <th>Ürün Adı</th>
+                        <th>Action</th>
+                    </tr>
+                </tfoot>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        int count = 1;
+                        <tr>
+                            <td>@count</td>
+                            <td>@item.urunAdi</td>
+                            <td>@*@Html.Action("UrunDuzenle", "Admin", new { UrunId = item.urunId})*@
+                                @Html.ActionLink("Duzenle", "UrunDuzenle", new { UrunId = item.urunId })</td>
+                        </tr>
+                        count++;
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

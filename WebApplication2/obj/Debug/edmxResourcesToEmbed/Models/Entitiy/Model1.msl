@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="urunDBModelStoreContainer" CdmEntityContainer="urunDBEntities">
+    <EntitySetMapping Name="adminTable">
+      <EntityTypeMapping TypeName="urunDBModel.adminTable">
+        <MappingFragment StoreEntitySet="adminTable">
+          <ScalarProperty Name="adminID" ColumnName="adminID" />
+          <ScalarProperty Name="adminEmail" ColumnName="adminEmail" />
+          <ScalarProperty Name="adminPass" ColumnName="adminPass" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="altGiyimTable">
+      <EntityTypeMapping TypeName="urunDBModel.altGiyimTable">
+        <MappingFragment StoreEntitySet="altGiyimTable">
+          <ScalarProperty Name="id2" ColumnName="id2" />
+          <ScalarProperty Name="marka2" ColumnName="marka2" />
+          <ScalarProperty Name="beden2" ColumnName="beden2" />
+          <ScalarProperty Name="renk2" ColumnName="renk2" />
+          <ScalarProperty Name="stil2" ColumnName="stil2" />
+          <ScalarProperty Name="belTipi2" ColumnName="belTipi2" />
+          <ScalarProperty Name="pacaTipi2" ColumnName="pacaTipi2" />
+          <ScalarProperty Name="boy2" ColumnName="boy2" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="elbiseTable">
+      <EntityTypeMapping TypeName="urunDBModel.elbiseTable">
+        <MappingFragment StoreEntitySet="elbiseTable">
+          <ScalarProperty Name="id3" ColumnName="id3" />
+          <ScalarProperty Name="marka3" ColumnName="marka3" />
+          <ScalarProperty Name="beden3" ColumnName="beden3" />
+          <ScalarProperty Name="renk3" ColumnName="renk3" />
+          <ScalarProperty Name="stil3" ColumnName="stil3" />
+          <ScalarProperty Name="boy3" ColumnName="boy3" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="kullaniciTable">
+      <EntityTypeMapping TypeName="urunDBModel.kullaniciTable">
+        <MappingFragment StoreEntitySet="kullaniciTable">
+          <ScalarProperty Name="userID" ColumnName="userID" />
+          <ScalarProperty Name="userEmail" ColumnName="userEmail" />
+          <ScalarProperty Name="userPass" ColumnName="userPass" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ustGiyimTable">
+      <EntityTypeMapping TypeName="urunDBModel.ustGiyimTable">
+        <MappingFragment StoreEntitySet="ustGiyimTable">
+          <ScalarProperty Name="id1" ColumnName="id1" />
+          <ScalarProperty Name="marka1" ColumnName="marka1" />
+          <ScalarProperty Name="beden1" ColumnName="beden1" />
+          <ScalarProperty Name="renk1" ColumnName="renk1" />
+          <ScalarProperty Name="stil1" ColumnName="stil1" />
+          <ScalarProperty Name="yaka1" ColumnName="yaka1" />
+          <ScalarProperty Name="kolTipi1" ColumnName="kolTipi1" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
