@@ -1840,6 +1840,7 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\GuvenlikController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PaymentController.cs" />
     <Compile Include="DAL\alisveriDetay.cs">
@@ -2097,6 +2098,12 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\PaymentWithPaypal\FailureView.cshtml" />
     <Content Include="Views\PaymentWithPaypal\SuccessView.cshtml" />
+    <Content Include="Views\Admin\Uye.cshtml" />
+    <Content Include="Views\Admin\UyeEkle.cshtml" />
+    <Content Include="Views\Admin\UyeDuzenle.cshtml" />
+    <Content Include="Views\Guvenlik\GirisYap.cshtml" />
+    <Content Include="Views\Guvenlik\UyeOl.cshtml" />
+    <Content Include="Views\Guvenlik\uyeOl2.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

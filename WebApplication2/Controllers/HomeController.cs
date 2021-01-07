@@ -15,8 +15,9 @@ namespace WebApplication2.Controllers
         // GET: Home
         public ActionResult Index()
         {
-            return View();
-        }
+            return View("Index");
+
+        }        
         public ActionResult Categories(string search, int? page)
         {
             HomeKategorilerViewModel model = new HomeKategorilerViewModel();
@@ -56,47 +57,49 @@ namespace WebApplication2.Controllers
         }
         public ActionResult AddtoCart(int urunid )
         {
-            if(Session["cart"] == null)
-            {
-                List<Item> cart = new List<Item>();
-                var Urun = ctx.urunTables.Find(urunid);
-                cart.Add(new Item()
+                if (Session["cart"] == null)
                 {
-                    urun = Urun,
-                    miktar = 1
-                });
-                Session["cart"] = cart;
-            }
-            else
-            {
-                List<Item> cart = (List<Item>)Session["cart"];
-                var Urun = ctx.urunTables.Find(urunid);
-                foreach(var item in cart)
-                {
-                    if(item.urun.urunId == urunid)
+                    List<Item> cart = new List<Item>();
+                    var Urun = ctx.urunTables.Find(urunid);
+                    cart.Add(new Item()
                     {
-                        int x = item.miktar;
-                        cart.Remove(item);
-                        cart.Add(new Item()
-                        {
-                            urun = Urun,
-                            miktar = x+1
-                        });
-                        break;
-                    }
-                    else
-                    {
-                        cart.Add(new Item()
-                        {
-                            urun = Urun,
-                            miktar = 1
-                        });
-                    }
+                        urun = Urun,
+                        miktar = 1
+                    });
+                    Session["cart"] = cart;
                 }
-                
-                Session["cart"] = cart;
-            }
-            return Redirect("Categories");
+                else
+                {
+                    List<Item> cart = (List<Item>)Session["cart"];
+                    var Urun = ctx.urunTables.Find(urunid);
+                    foreach (var item in cart)
+                    {
+                        if (item.urun.urunId == urunid)
+                        {
+                            int x = item.miktar;
+                            cart.Remove(item);
+                            cart.Add(new Item()
+                            {
+                                urun = Urun,
+                                miktar = x + 1
+                            });
+                            break;
+                        }
+                        else
+                        {
+                            cart.Add(new Item()
+                            {
+                                urun = Urun,
+                                miktar = 1
+                            });
+                        }
+                    }
+
+                    Session["cart"] = cart;
+                }
+                return Redirect("Categories");
+
+            
         }
         public ActionResult RemoveFromCart (int urunid)
         {

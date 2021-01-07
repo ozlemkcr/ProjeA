@@ -89,10 +89,9 @@
     <Property Name="uyeSoyad" Type="varchar" MaxLength="200" />
     <Property Name="uyeEmail" Type="varchar" MaxLength="200" />
     <Property Name="uyePass" Type="varchar" MaxLength="500" />
-    <Property Name="isActive" Type="bit" />
-    <Property Name="isDelete" Type="bit" />
     <Property Name="uyelikTarihi" Type="datetime" />
     <Property Name="uyelikDegismeTarihi" Type="datetime" />
+    <Property Name="uyeRol" Type="varchar" MaxLength="100" />
   </EntityType>
   <Association Name="FK__alisveriD__uyeId__2E1BDC42">
     <End Role="uyeTable" Type="Self.uyeTable" Multiplicity="0..1" />

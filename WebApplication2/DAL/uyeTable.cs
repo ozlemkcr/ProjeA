@@ -25,10 +25,9 @@ namespace WebApplication2.DAL
         public string uyeSoyad { get; set; }
         public string uyeEmail { get; set; }
         public string uyePass { get; set; }
-        public Nullable<bool> isActive { get; set; }
-        public Nullable<bool> isDelete { get; set; }
         public Nullable<System.DateTime> uyelikTarihi { get; set; }
         public Nullable<System.DateTime> uyelikDegismeTarihi { get; set; }
+        public string uyeRol { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<alisveriDetay> alisveriDetays { get; set; }

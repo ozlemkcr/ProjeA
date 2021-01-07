@@ -71,21 +71,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="uyeTables">
-      <EntityTypeMapping TypeName="eTicaretDbModel.uyeTable">
-        <MappingFragment StoreEntitySet="uyeTable">
-          <ScalarProperty Name="uyeId" ColumnName="uyeId" />
-          <ScalarProperty Name="uyeAd" ColumnName="uyeAd" />
-          <ScalarProperty Name="uyeSoyad" ColumnName="uyeSoyad" />
-          <ScalarProperty Name="uyeEmail" ColumnName="uyeEmail" />
-          <ScalarProperty Name="uyePass" ColumnName="uyePass" />
-          <ScalarProperty Name="isActive" ColumnName="isActive" />
-          <ScalarProperty Name="isDelete" ColumnName="isDelete" />
-          <ScalarProperty Name="uyelikTarihi" ColumnName="uyelikTarihi" />
-          <ScalarProperty Name="uyelikDegismeTarihi" ColumnName="uyelikDegismeTarihi" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="urunTables">
       <EntityTypeMapping TypeName="eTicaretDbModel.urunTable">
         <MappingFragment StoreEntitySet="urunTable">
@@ -101,6 +86,20 @@
           <ScalarProperty Name="kategoriId" ColumnName="kategoriId" />
           <ScalarProperty Name="urunAdi" ColumnName="urunAdi" />
           <ScalarProperty Name="urunId" ColumnName="urunId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="uyeTables">
+      <EntityTypeMapping TypeName="eTicaretDbModel.uyeTable">
+        <MappingFragment StoreEntitySet="uyeTable">
+          <ScalarProperty Name="uyeRol" ColumnName="uyeRol" />
+          <ScalarProperty Name="uyelikDegismeTarihi" ColumnName="uyelikDegismeTarihi" />
+          <ScalarProperty Name="uyelikTarihi" ColumnName="uyelikTarihi" />
+          <ScalarProperty Name="uyePass" ColumnName="uyePass" />
+          <ScalarProperty Name="uyeEmail" ColumnName="uyeEmail" />
+          <ScalarProperty Name="uyeSoyad" ColumnName="uyeSoyad" />
+          <ScalarProperty Name="uyeAd" ColumnName="uyeAd" />
+          <ScalarProperty Name="uyeId" ColumnName="uyeId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

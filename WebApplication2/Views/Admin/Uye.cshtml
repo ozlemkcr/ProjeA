@@ -1,0 +1,65 @@
+﻿@model IEnumerable<WebApplication2.DAL.uyeTable>
+@{
+    ViewBag.Title = "Uye";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <i class="fas fa-table"></i>
+        Ürünler
+        <a href="../Admin/UyeEkle" class="btn btn-info pull-right">Yeni Uye ekle</a>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>İd</th>
+                        <th>Adı</th>
+                        <th>Soyadı</th>
+                        <th>Email</th>
+                        <th>Şifre</th>
+                        <th>Üyelik Tarihi</th>
+                        <th>Üyelik Değişme Tarihi</th>
+                        <th>İşlem</th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>İd</th>
+                        <th>Adı</th>
+                        <th>Soyadı</th>
+                        <th>Email</th>
+                        <th>Şifre</th>
+                        <th>Üyelik Tarihi</th>
+                        <th>Üyelik Değişme Tarihi</th>
+                        <th>İşlem</th>
+                    </tr>
+                </tfoot>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        int count = 1;
+                        <tr>
+                            <td>@count</td>
+                            <td>@item.uyeAd</td>
+                            <td>@item.uyeSoyad</td>
+                            <td>@item.uyeEmail</td>
+                            <td>@item.uyePass</td>
+                            <td>@item.uyelikTarihi</td>
+                            <td>@item.uyelikDegismeTarihi</td>
+
+                            <td>
+                                @*@Html.Action("UrunDuzenle", "Admin", new { UrunId = item.urunId})*@
+                            @Html.ActionLink("Düzenle", "UyeDuzenle", new { UyeId = item.uyeId, })
+                        </td>
+                    </tr>
+                    count++;
+                }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+

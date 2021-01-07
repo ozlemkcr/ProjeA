@@ -12,11 +12,11 @@
         <EntityTypeShape EntityType="eTicaretDbModel.rolTable" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="eTicaretDbModel.slideImageTable" Width="1.5" PointX="7.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="eTicaretDbModel.uyeRolu" Width="1.5" PointX="5.75" PointY="7.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="eTicaretDbModel.uyeTable" Width="1.5" PointX="0.75" PointY="6.125" IsExpanded="true" />
-        <AssociationConnector Association="eTicaretDbModel.FK__alisveriD__uyeId__2E1BDC42" ManuallyRouted="false" />
         <EntityTypeShape EntityType="eTicaretDbModel.urunTable" Width="1.5" PointX="3" PointY="0.875" />
         <AssociationConnector Association="eTicaretDbModel.FK__kartTable__urunI__32E0915F" />
         <AssociationConnector Association="eTicaretDbModel.FK__urunTable__kateg__267ABA7A" />
+        <EntityTypeShape EntityType="eTicaretDbModel.uyeTable" Width="1.5" PointX="0.75" PointY="6.25" />
+        <AssociationConnector Association="eTicaretDbModel.FK__alisveriD__uyeId__2E1BDC42" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

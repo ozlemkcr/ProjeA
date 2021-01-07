@@ -14,7 +14,7 @@
     <Property Name="siparisId" Type="Int32" />
     <Property Name="odenenMiktar" Type="Decimal" Precision="18" Scale="0" />
     <Property Name="odemeTuru" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="uyeTable" Relationship="Self.FK__alisveriD__uyeId__2E1BDC42" FromRole="alisveriDetay" ToRole="uyeTable" />
+    <NavigationProperty Name="uyeTable" Relationship="eTicaretDbModel.FK__alisveriD__uyeId__2E1BDC42" FromRole="alisveriDetay" ToRole="uyeTable" />
   </EntityType>
   <EntityType Name="kartStatuTable">
     <Key>
@@ -66,33 +66,6 @@
     <Property Name="uyeId" Type="Int32" />
     <Property Name="rolId" Type="Int32" />
   </EntityType>
-  <EntityType Name="uyeTable">
-    <Key>
-      <PropertyRef Name="uyeId" />
-    </Key>
-    <Property Name="uyeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="uyeAd" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-    <Property Name="uyeSoyad" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-    <Property Name="uyeEmail" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-    <Property Name="uyePass" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-    <Property Name="isActive" Type="Boolean" />
-    <Property Name="isDelete" Type="Boolean" />
-    <Property Name="uyelikTarihi" Type="DateTime" Precision="3" />
-    <Property Name="uyelikDegismeTarihi" Type="DateTime" Precision="3" />
-    <NavigationProperty Name="alisveriDetays" Relationship="Self.FK__alisveriD__uyeId__2E1BDC42" FromRole="uyeTable" ToRole="alisveriDetay" />
-  </EntityType>
-  <Association Name="FK__alisveriD__uyeId__2E1BDC42">
-    <End Role="uyeTable" Type="Self.uyeTable" Multiplicity="0..1" />
-    <End Role="alisveriDetay" Type="Self.alisveriDetay" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="uyeTable">
-        <PropertyRef Name="uyeId" />
-      </Principal>
-      <Dependent Role="alisveriDetay">
-        <PropertyRef Name="uyeId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <EntityContainer Name="eTicaretDbEntities1" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="alisveriDetays" EntityType="Self.alisveriDetay" />
     <EntitySet Name="kartStatuTables" EntityType="Self.kartStatuTable" />
@@ -101,11 +74,6 @@
     <EntitySet Name="rolTables" EntityType="Self.rolTable" />
     <EntitySet Name="slideImageTables" EntityType="Self.slideImageTable" />
     <EntitySet Name="uyeRolus" EntityType="Self.uyeRolu" />
-    <EntitySet Name="uyeTables" EntityType="Self.uyeTable" />
-    <AssociationSet Name="FK__alisveriD__uyeId__2E1BDC42" Association="Self.FK__alisveriD__uyeId__2E1BDC42">
-      <End Role="uyeTable" EntitySet="uyeTables" />
-      <End Role="alisveriDetay" EntitySet="alisveriDetays" />
-    </AssociationSet>
     <EntitySet Name="urunTables" EntityType="eTicaretDbModel.urunTable" />
     <AssociationSet Name="FK__kartTable__urunI__32E0915F" Association="eTicaretDbModel.FK__kartTable__urunI__32E0915F">
       <End Role="urunTable" EntitySet="urunTables" />
@@ -114,6 +82,11 @@
     <AssociationSet Name="FK__urunTable__kateg__267ABA7A" Association="eTicaretDbModel.FK__urunTable__kateg__267ABA7A">
       <End Role="kategoriTable" EntitySet="kategoriTables" />
       <End Role="urunTable" EntitySet="urunTables" />
+    </AssociationSet>
+    <EntitySet Name="uyeTables" EntityType="eTicaretDbModel.uyeTable" />
+    <AssociationSet Name="FK__alisveriD__uyeId__2E1BDC42" Association="eTicaretDbModel.FK__alisveriD__uyeId__2E1BDC42">
+      <End Role="uyeTable" EntitySet="uyeTables" />
+      <End Role="alisveriDetay" EntitySet="alisveriDetays" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="urunTable">
@@ -156,6 +129,32 @@
       </Principal>
       <Dependent Role="urunTable">
         <PropertyRef Name="kategoriId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="uyeTable">
+    <Key>
+      <PropertyRef Name="uyeId" />
+    </Key>
+    <Property Name="uyeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="uyeAd" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="uyeSoyad" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="uyeEmail" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="uyePass" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="uyelikTarihi" Type="DateTime" Precision="3" />
+    <Property Name="uyelikDegismeTarihi" Type="DateTime" Precision="3" />
+    <Property Name="uyeRol" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="alisveriDetays" Relationship="eTicaretDbModel.FK__alisveriD__uyeId__2E1BDC42" FromRole="uyeTable" ToRole="alisveriDetay" />
+  </EntityType>
+  <Association Name="FK__alisveriD__uyeId__2E1BDC42">
+    <End Type="eTicaretDbModel.uyeTable" Role="uyeTable" Multiplicity="0..1" />
+    <End Type="eTicaretDbModel.alisveriDetay" Role="alisveriDetay" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="uyeTable">
+        <PropertyRef Name="uyeId" />
+      </Principal>
+      <Dependent Role="alisveriDetay">
+        <PropertyRef Name="uyeId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

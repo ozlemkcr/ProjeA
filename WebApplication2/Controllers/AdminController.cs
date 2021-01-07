@@ -64,6 +64,35 @@ namespace WebApplication2.Controllers
             return RedirectToAction("Kategoriler");
 
         }
+        public ActionResult Uye()
+        {
+            return View(_unitOfWork.GetRepositoryInstance<uyeTable>().GetProduct());
+
+        }
+        public ActionResult UyeEkle()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult UyeEkle(uyeTable tbl, HttpPostedFileBase file)
+        {
+            tbl.uyelikTarihi = DateTime.Now;
+            _unitOfWork.GetRepositoryInstance<uyeTable>().Add(tbl);
+            return RedirectToAction("Uye");
+        }
+        public ActionResult UyeDuzenle(int uyeid)
+        {
+            return View(_unitOfWork.GetRepositoryInstance<uyeTable>().GetFirstorDefault(uyeid));
+
+        }
+        [HttpPost]
+        public ActionResult UyeDuzenle(uyeTable tbl, HttpPostedFileBase file)
+        {
+            tbl.uyelikDegismeTarihi = DateTime.Now;
+            _unitOfWork.GetRepositoryInstance<uyeTable>().Update(tbl);
+            return RedirectToAction("Uye");
+
+        }
         public ActionResult Urun()
         {
             return View(_unitOfWork.GetRepositoryInstance<urunTable>().GetProduct());

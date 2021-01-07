@@ -1,4 +1,6 @@
-﻿$("#signup").click(function () {
+﻿
+
+$("#signup").click(function () {
     $("#first").fadeOut("fast", function () {
         $("#second").fadeIn("fast");
     });

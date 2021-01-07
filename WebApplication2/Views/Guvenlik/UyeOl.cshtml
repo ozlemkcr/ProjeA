@@ -1,0 +1,85 @@
+﻿@model WebApplication2.DAL.uyeTable
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>GirisYap</title>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!------ Include the above in your HEAD tag ---------->
+    <link rel="stylesheet" href="../Content/css/login.css" />
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.15.1/jquery.validate.min.js"></script>
+    <script src="../Scripts/login.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+
+</head>
+<body>
+    @using (Html.BeginForm())
+    {
+        <div class="container">
+            <div class="row">
+                <div class="col-md-5 mx-auto">
+                    <div id="first">
+                        <div class="myform form ">
+                            <div class="logo mb-3">
+                                <div class="col-md-12 text-center">
+                                    <h1>Üye Ol</h1>
+                                </div>
+                            </div>
+                            @using (Html.BeginForm("Index", "Home", FormMethod.Post))
+                            {
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.uyeAd, htmlAttributes: new { @class = "control-label col-md-2", @for = "exampleInputEmail1" })
+                                    @Html.EditorFor(model => model.uyeAd, new { htmlAttributes = new { @class = "form-control", type = "text", name = "ad", required = "", placeholder = "Enter email" } })
+                                    @Html.ValidationMessageFor(model => model.uyeAd, "", new { @class = "text-danger" })
+
+                                </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.uyeSoyad, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    @Html.EditorFor(model => model.uyeSoyad, new { htmlAttributes = new { @class = "form-control", type = "text" ,name = "soyad", required = "" ,id = "password", placeholder = "Enter Password" } })
+                                    @Html.ValidationMessageFor(model => model.uyeSoyad, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.uyeEmail, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    @Html.EditorFor(model => model.uyeEmail, new { htmlAttributes = new { @class = "form-control", type = "email", name = "email", required = "", id = "email" , placeholder = "Enter email" } })
+                                    @Html.ValidationMessageFor(model => model.uyeEmail, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.uyePass, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    @Html.EditorFor(model => model.uyePass, new { htmlAttributes = new { @class = "form-control", type = "password", name = "password", required = "", id = "password", placeholder = "Enter Password" } })
+                                    @Html.ValidationMessageFor(model => model.uyePass, "", new { @class = "text-danger" })
+                                </div>
+
+                                @Html.HiddenFor(model => model.uyelikDegismeTarihi)
+
+                                <div class="col-md-12 text-center ">
+                                    <button type="submit" class=" btn btn-block mybtn btn-primary tx-tfm">Login</button>
+                                </div>
+                                <div class="col-md-12 ">
+                                    <div class="login-or">
+                                        <hr class="hr-or">
+                                        <span class="span-or">or</span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <p class="text-center">Bir hesabın var mı? <a href="../Guvenlik/GirisYap" id="signup">Giriş yap.</a></p>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+     }
+
+
+    </body>
+</html>
