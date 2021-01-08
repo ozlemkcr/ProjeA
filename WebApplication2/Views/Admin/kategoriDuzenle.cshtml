@@ -1,7 +1,7 @@
 ﻿@model WebApplication2.DAL.kategoriTable
 
 @{
-    ViewBag.Title = "kategoriDuzenle";
+    ViewBag.Title = "Kategori Düzenle";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
@@ -11,19 +11,20 @@
         @Html.AntiForgeryToken()
 
         <div class="form-horizontal">
-            <h4>kategoriTable</h4>
+            <h4>Kategori Düzenle</h4>
             <hr />
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             <div class="form-group">
-                @Html.LabelFor(model => model.kategoriAdi, htmlAttributes: new { @class = "control-label col-md-2" })
+                <label class="control-label col-md-2">Kategori Adı</label>
                 <div class="col-md-10">
                     @Html.EditorFor(model => model.kategoriAdi, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.kategoriAdi, "", new { @class = "text-danger" })
                 </div>
             </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.isActive, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.HiddenFor(model => model.isActive)
+            @Html.HiddenFor(model => model.isDelete)
+            @*<div class="form-group">
+                <label class="control-label col-md-2">Aktiflik</label>
                 <div class="col-md-10">
                     @Html.EditorFor(model => model.isActive, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.isActive, "", new { @class = "text-danger" })
@@ -31,16 +32,16 @@
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(model => model.isDelete, htmlAttributes: new { @class = "control-label col-md-2" })
+                <label class="control-label col-md-2">Silinecek mi</label>
                 <div class="col-md-10">
                     @Html.EditorFor(model => model.isDelete, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.isDelete, "", new { @class = "text-danger" })
                 </div>
-            </div>
+            </div>*@
 
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Save" class="btn btn-default" />
+                    <input type="submit" value="Kaydet" class="btn btn-primary" />
                 </div>
             </div>
         </div>

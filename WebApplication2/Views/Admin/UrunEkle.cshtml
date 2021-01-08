@@ -1,23 +1,21 @@
 ﻿@model WebApplication2.DAL.urunTable
 
 @{
-    ViewBag.Title = "UrunEkle";
+    ViewBag.Title = "Ürün Ekle";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
-
-<h2>UrunEkle</h2>
 
 @using (Html.BeginForm("UrunEkle", "Admin", FormMethod.Post, new { enctype="multipart/form-data" } )) 
 {
     @Html.AntiForgeryToken()
     
 <div class="form-horizontal">
-    <h4>urunTable</h4>
+    <h4>Ürün Ekle</h4>
     <hr />
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     <div class="form-group">
-        @Html.LabelFor(model => model.urunAdi, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
+        <label class="control-label col-md-5">Ürün Adı</label>
+        <div class="col-md-6">
             @Html.EditorFor(model => model.urunAdi, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.urunAdi, "", new { @class = "text-danger" })
         </div>
@@ -26,51 +24,51 @@
         List<SelectListItem> data = ViewBag.kategoriList;
     }
     <div class="form-group">
-        @Html.LabelFor(model => model.kategoriId, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.DropDownListFor(model => model.kategoriId, data, "---select---", new { @class = "form-control" })
+        <label class="control-label col-md-5">Kategori Adı</label>
+        <div class="col-md-6">
+            @Html.DropDownListFor(model => model.kategoriId, data, "-Seçiniz-", new { @class = "form-control" })
             @Html.ValidationMessageFor(model => model.kategoriId, "", new { @class = "text-danger" })
         </div>
     </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.isActive, htmlAttributes: new { @class = "control-label col-md-2" })
+    @Html.HiddenFor(model => model.isActive)
+    @*<div class="form-group">
+        <label class="control-label col-md-5">Ürün Adı</label>
         <div class="col-md-10">
             @Html.EditorFor(model => model.isActive, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.isActive, "", new { @class = "text-danger" })
         </div>
-    </div>
+    </div>*@
 
     @Html.HiddenFor(model => model.isDelete)
 
 
     <div class="form-group">
-        @Html.LabelFor(model => model.aciklama, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
+        <label class="control-label col-md-5">Ürün Açıklaması</label>
+        <div class="col-md-6">
             @Html.EditorFor(model => model.aciklama, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.aciklama, "", new { @class = "text-danger" })
         </div>
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.urunResmi, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
+        <label class="control-label col-md-5">Ürün Resmi</label>
+        <div class="col-md-6">
             <input type="file" name="file" id="file" style="width:100%" />
             @Html.ValidationMessageFor(model => model.urunResmi, "", new { @class = "text-danger" })
         </div>
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.ozellik, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
+        <label class="control-label col-md-5">Ürün Özelliği</label>
+        <div class="col-md-6">
             @Html.EditorFor(model => model.ozellik, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.ozellik, "", new { @class = "text-danger" })
         </div>
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.fiyat, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
+        <label class="control-label col-md-5">Ürün Fiyatı</label>
+        <div class="col-md-6">
             @Html.EditorFor(model => model.fiyat, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.fiyat, "", new { @class = "text-danger" })
         </div>
@@ -78,7 +76,7 @@
 
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Create" class="btn btn-default" />
+            <input type="submit" value="Ekle" class="btn btn-primary" />
         </div>
     </div>
 </div>

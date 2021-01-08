@@ -19,7 +19,7 @@
                 <li class="nav-item"><a class="nav-link js-scroll-trigger" href="../Home/Categories">Kategoriler</a></li>
                 <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#about">Hakkımızda</a></li>
                 <li class="nav-item dropdown">
-                    <a data-toggle="dropdown" class="nav-link js-scroll-trigger dropdown-toggle" href="#"> <img src="../Content/images/basket.png" /></a>
+                    <a data-toggle="dropdown" class="nav-link js-scroll-trigger dropdown-toggle" href="#" title="Sepet"> <img src="../Content/images/basket.png" /></a>
                     <ul class="dropdown-menu">
                         @if (Session["cart"] != null)
                         {
@@ -34,11 +34,11 @@
                 </li>
                 @if (Session["user"] != null)
                 {
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="@Url.Action("logout", "Guvenlik")">çıkış</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" title="Çıkış Yap" href="@Url.Action("logout", "Guvenlik")"><img src="../Content/images/logout.png" /></a></li>
                 }
                 else
                 {
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="../Guvenlik/GirisYap"> <img src="../Content/images/user.png" /></a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" title="Giriş Yap" href="../Guvenlik/GirisYap"> <img src="../Content/images/user.png" /></a></li>
                 }
 
 

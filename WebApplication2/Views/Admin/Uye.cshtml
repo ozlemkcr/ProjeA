@@ -7,8 +7,8 @@
 <div class="card shadow mb-4">
     <div class="card-header py-3">
         <i class="fas fa-table"></i>
-        Ürünler
-        <a href="../Admin/UyeEkle" class="btn btn-info pull-right">Yeni Uye ekle</a>
+        Üyeler
+        <a href="../Admin/UyeEkle" class="btn btn-info pull-right">Yeni Üye ekle</a>
     </div>
     <div class="card-body">
         <div class="table-responsive">
@@ -52,8 +52,9 @@
 
                             <td>
                                 @*@Html.Action("UrunDuzenle", "Admin", new { UrunId = item.urunId})*@
-                            @Html.ActionLink("Düzenle", "UyeDuzenle", new { UyeId = item.uyeId, })
-                        </td>
+                                @Html.ActionLink("Düzenle", "UyeDuzenle", new { UyeId = item.uyeId, })
+                                @Html.ActionLink("Sil", "UyeSil", new { UyeId = item.uyeId, })
+                            </td>
                     </tr>
                     count++;
                 }

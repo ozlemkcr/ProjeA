@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<WebApplication2.DAL.urunTable>
 
 @{
-    ViewBag.Title = "Urun";
+    ViewBag.Title = "Ürünler";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
@@ -9,7 +9,7 @@
     <div class="card-header py-3">
         <i class="fas fa-table"></i>
         Ürünler
-        <a href="../Admin/UrunEkle" class="btn btn-info pull-right">Yeni kategori ekle</a>
+        <a href="../Admin/UrunEkle" class="btn btn-info pull-right">Yeni ürün ekle</a>
     </div>
     <div class="card-body">
         <div class="table-responsive">
@@ -18,14 +18,14 @@
                     <tr>
                         <th>İd</th>
                         <th>Ürün Adı</th>
-                        <th>Action</th>
+                        <th>İşlem</th>
                     </tr>
                 </thead>
                 <tfoot>
                     <tr>
                         <th>İd</th>
                         <th>Ürün Adı</th>
-                        <th>Action</th>
+                        <th>İşlem</th>
                     </tr>
                 </tfoot>
                 <tbody>
@@ -35,8 +35,10 @@
                         <tr>
                             <td>@count</td>
                             <td>@item.urunAdi</td>
-                            <td>@*@Html.Action("UrunDuzenle", "Admin", new { UrunId = item.urunId})*@
-                                @Html.ActionLink("Duzenle", "UrunDuzenle", new { UrunId = item.urunId })</td>
+                            <td>
+                                @Html.ActionLink("Duzenle", "UrunDuzenle", new { UrunId = item.urunId })
+                                @Html.ActionLink("Sil", "UrunSil", new { UrunId = item.urunId })
+                            </td>
                         </tr>
                         count++;
                     }

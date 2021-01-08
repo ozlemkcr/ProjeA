@@ -7,10 +7,6 @@
 }
 
 <div class="container-fluid">
-
-    <!-- Page Heading -->
-    <h1 class="h3 mb-2 text-gray-800">Tables</h1>
-    <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             <i class="fas fa-table"></i>
@@ -24,14 +20,14 @@
                         <tr>
                             <th>İd</th>
                             <th>Kategori Adı</th>
-                            <th>Action</th>
+                            <th>İşlem</th>
                         </tr>
                     </thead>
                     <tfoot>
                         <tr>
                             <th>İd</th>
                             <th>Kategori Adı</th>
-                            <th>Action</th>
+                            <th>İşlem</th>
                         </tr>
                     </tfoot>
                     <tbody>
@@ -40,7 +36,10 @@
                             <tr>
                                 <td>@(Model.IndexOf(item)+1)</td>
                                 <td>@item.kategoriAdi</td>
-                                <td>@Html.ActionLink("Duzenle", "kategoriDuzenle", new { katid = item.kategoriId })</td>
+                                <td>
+                                
+                                @Html.ActionLink("Duzenle", "kategoriDuzenle", new { @class = "btn btn-info pull-right", katid = item.kategoriId  })
+                                @Html.ActionLink("Sil", "kategoriSil", new { @class = "btn btn-info pull-right", katid = item.kategoriId })</td>
                             </tr>
                         }                       
                     </tbody>

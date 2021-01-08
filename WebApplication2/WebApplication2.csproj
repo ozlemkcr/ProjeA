@@ -118,12 +118,6 @@
   <ItemGroup>
     <Content Include="AdminStyle\css\sb-admin-2.css" />
     <Content Include="AdminStyle\css\sb-admin-2.min.css" />
-    <Content Include="AdminStyle\img\undraw_posting_photo.svg" />
-    <Content Include="AdminStyle\img\undraw_profile.svg" />
-    <Content Include="AdminStyle\img\undraw_profile_1.svg" />
-    <Content Include="AdminStyle\img\undraw_profile_2.svg" />
-    <Content Include="AdminStyle\img\undraw_profile_3.svg" />
-    <Content Include="AdminStyle\img\undraw_rocket.svg" />
     <Content Include="AdminStyle\js\demo\chart-area-demo.js" />
     <Content Include="AdminStyle\js\demo\chart-bar-demo.js" />
     <Content Include="AdminStyle\js\demo\chart-pie-demo.js" />
@@ -1799,7 +1793,11 @@
     <Content Include="AdminStyle\vendor\jquery\jquery.min.js" />
     <Content Include="AdminStyle\vendor\jquery\jquery.slim.js" />
     <Content Include="AdminStyle\vendor\jquery\jquery.slim.min.js" />
+    <Content Include="Content\css\bootstrap.min.css" />
+    <Content Include="Content\css\custom.css" />
     <Content Include="Content\css\login.css" />
+    <Content Include="Content\css\responsive.css" />
+    <Content Include="Content\css\style.css" />
     <Content Include="Content\css\styles.css" />
     <Content Include="Content\css\trendyol.css" />
     <Content Include="Content\css\urunEkle.css" />
@@ -1808,12 +1806,7 @@
     <Content Include="Content\images\basket.png" />
     <Content Include="Content\images\bg-masthead.jpg" />
     <Content Include="Content\images\favicon.ico" />
-    <Content Include="Content\images\portfolio\fullsize\1.jpg" />
-    <Content Include="Content\images\portfolio\fullsize\2.jpg" />
-    <Content Include="Content\images\portfolio\fullsize\3.jpg" />
-    <Content Include="Content\images\portfolio\fullsize\4.jpg" />
-    <Content Include="Content\images\portfolio\fullsize\5.jpg" />
-    <Content Include="Content\images\portfolio\fullsize\6.jpg" />
+    <Content Include="Content\images\logout.png" />
     <Content Include="Content\images\portfolio\thumbnails\b1.jpg" />
     <Content Include="Content\images\portfolio\thumbnails\h4.jpg" />
     <Content Include="Content\images\portfolio\thumbnails\k1.jpg" />
@@ -1907,29 +1900,6 @@
     <Content Include="DAL\Model1.edmx.diagram">
       <DependentUpon>Model1.edmx</DependentUpon>
     </Content>
-    <Content Include="AdminStyle\scss\navs\_global.scss" />
-    <Content Include="AdminStyle\scss\navs\_sidebar.scss" />
-    <Content Include="AdminStyle\scss\navs\_topbar.scss" />
-    <Content Include="AdminStyle\scss\sb-admin-2.scss" />
-    <Content Include="AdminStyle\scss\utilities\_animation.scss" />
-    <Content Include="AdminStyle\scss\utilities\_background.scss" />
-    <Content Include="AdminStyle\scss\utilities\_border.scss" />
-    <Content Include="AdminStyle\scss\utilities\_display.scss" />
-    <Content Include="AdminStyle\scss\utilities\_progress.scss" />
-    <Content Include="AdminStyle\scss\utilities\_rotate.scss" />
-    <Content Include="AdminStyle\scss\utilities\_text.scss" />
-    <Content Include="AdminStyle\scss\_buttons.scss" />
-    <Content Include="AdminStyle\scss\_cards.scss" />
-    <Content Include="AdminStyle\scss\_charts.scss" />
-    <Content Include="AdminStyle\scss\_dropdowns.scss" />
-    <Content Include="AdminStyle\scss\_error.scss" />
-    <Content Include="AdminStyle\scss\_footer.scss" />
-    <Content Include="AdminStyle\scss\_global.scss" />
-    <Content Include="AdminStyle\scss\_login.scss" />
-    <Content Include="AdminStyle\scss\_mixins.scss" />
-    <Content Include="AdminStyle\scss\_navs.scss" />
-    <Content Include="AdminStyle\scss\_utilities.scss" />
-    <Content Include="AdminStyle\scss\_variables.scss" />
     <Content Include="AdminStyle\vendor\bootstrap\js\bootstrap.bundle.js.map" />
     <Content Include="AdminStyle\vendor\bootstrap\js\bootstrap.bundle.min.js.map" />
     <Content Include="AdminStyle\vendor\bootstrap\js\bootstrap.js.map" />

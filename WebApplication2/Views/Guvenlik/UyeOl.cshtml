@@ -8,7 +8,7 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>GirisYap</title>
+    <title>Üye Ol</title>
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -37,40 +37,40 @@
                             @using (Html.BeginForm("Index", "Home", FormMethod.Post))
                             {
                                 <div class="form-group">
-                                    @Html.LabelFor(model => model.uyeAd, htmlAttributes: new { @class = "control-label col-md-2", @for = "exampleInputEmail1" })
-                                    @Html.EditorFor(model => model.uyeAd, new { htmlAttributes = new { @class = "form-control", type = "text", name = "ad", required = "", placeholder = "Enter email" } })
+                                    <label for="exampleInputEmail1">Adınız</label>
+                                    @Html.EditorFor(model => model.uyeAd, new { htmlAttributes = new { @class = "form-control", type = "text", name = "ad", required = "", placeholder = "Adınızı Giriniz" } })
                                     @Html.ValidationMessageFor(model => model.uyeAd, "", new { @class = "text-danger" })
 
                                 </div>
                                 <div class="form-group">
-                                    @Html.LabelFor(model => model.uyeSoyad, htmlAttributes: new { @class = "control-label col-md-2" })
-                                    @Html.EditorFor(model => model.uyeSoyad, new { htmlAttributes = new { @class = "form-control", type = "text" ,name = "soyad", required = "" ,id = "password", placeholder = "Enter Password" } })
+                                    <label for="exampleInputEmail1">Soyadınız</label>
+                                    @Html.EditorFor(model => model.uyeSoyad, new { htmlAttributes = new { @class = "form-control", type = "text", name = "soyad", required = "", id = "password", placeholder = "Soyadınızı Giriniz" } })
                                     @Html.ValidationMessageFor(model => model.uyeSoyad, "", new { @class = "text-danger" })
                                 </div>
                                 <div class="form-group">
-                                    @Html.LabelFor(model => model.uyeEmail, htmlAttributes: new { @class = "control-label col-md-2" })
-                                    @Html.EditorFor(model => model.uyeEmail, new { htmlAttributes = new { @class = "form-control", type = "email", name = "email", required = "", id = "email" , placeholder = "Enter email" } })
+                                    <label for="exampleInputEmail1">E-posta Adresiniz</label>
+                                    @Html.EditorFor(model => model.uyeEmail, new { htmlAttributes = new { @class = "form-control", type = "email", name = "email", required = "", id = "email", placeholder = "Email Adresinizi Giriniz" } })
                                     @Html.ValidationMessageFor(model => model.uyeEmail, "", new { @class = "text-danger" })
                                 </div>
                                 <div class="form-group">
-                                    @Html.LabelFor(model => model.uyePass, htmlAttributes: new { @class = "control-label col-md-2" })
-                                    @Html.EditorFor(model => model.uyePass, new { htmlAttributes = new { @class = "form-control", type = "password", name = "password", required = "", id = "password", placeholder = "Enter Password" } })
+                                    <label for="exampleInputEmail1">Şifreniz</label>
+                                    @Html.EditorFor(model => model.uyePass, new { htmlAttributes = new { @class = "form-control", type = "password", name = "password", required = "", id = "password", placeholder = "Şifrenizi Giriniz" } })
                                     @Html.ValidationMessageFor(model => model.uyePass, "", new { @class = "text-danger" })
                                 </div>
 
                                 @Html.HiddenFor(model => model.uyelikDegismeTarihi)
 
                                 <div class="col-md-12 text-center ">
-                                    <button type="submit" class=" btn btn-block mybtn btn-primary tx-tfm">Login</button>
+                                    <button type="submit" class=" btn btn-block mybtn btn-primary tx-tfm">Giriş Yap</button>
                                 </div>
                                 <div class="col-md-12 ">
                                     <div class="login-or">
                                         <hr class="hr-or">
-                                        <span class="span-or">or</span>
+                                        <span class="span-or">YA DA</span>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <p class="text-center">Bir hesabın var mı? <a href="../Guvenlik/GirisYap" id="signup">Giriş yap.</a></p>
+                                    <p class="text-center">Bir hesabın var mı? <a href="../Guvenlik/GirisYap" id="signup">Giriş yap</a></p>
                                 </div>
                             }
                         </div>
