@@ -1,51 +1,58 @@
 ﻿@using WebApplication2.Models.Home;
 @{
-    ViewBag.Title = "CheckoutDetails";
+    ViewBag.Title = "Ödeme Detayları";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-@if (Session["cart"] == null)
-{
-    <div class="alert alert-danger">
-        <strong>No product added to cart!</strong>
+<header class="masthead1">
+    <div class="container h-100">
     </div>
+</header>
+<br />
 
-}
-else
-{
-    <table class="table table-bordered">
-        <thead>
-            <tr>
-                <th>Product</th>
-                <th>Price</th>
-                <th>Quantity</th>
-                <th>Line Total</th>
+<div style="width:80%; margin:auto;">
+    @if (Session["cart"] == null)
+    {
+        <div class="alert alert-danger">
+            <strong>No product added to cart!</strong>
+        </div>
 
-            </tr>
-        </thead>
-        <tbody>
-            @{
-                int Total = 0;
-            }
-            @foreach (Item item in (List<Item>)Session["cart"])
-            {
-                int lineTotal = Convert.ToInt32(item.miktar * item.urun.fiyat);
-                Total = Convert.ToInt32(@Total + lineTotal);
-
-                Session["SesTotal"] = Total;
+    }
+    else
+    {
+        <table class="table table-bordered">
+            <thead>
                 <tr>
-                    <td>@item.urun.urunAdi</td>
-                    <td>@item.urun.fiyat</td>
-                    <td>@item.miktar</td>
-                    <td>@lineTotal</td>
+                    <th>Ürün</th>
+                    <th>Fiyat</th>
+                    <th>Miktar</th>
+                    <th>Tutar</th>
+
                 </tr>
-            }
+            </thead>
+            <tbody>
+                @{
+                    int Total = 0;
+                }
+                @foreach (Item item in (List<Item>)Session["cart"])
+                {
+                    int lineTotal = Convert.ToInt32(item.miktar * item.urun.fiyat);
+                    Total = Convert.ToInt32(@Total + lineTotal);
 
-            <tr>
-                <td colspan="4" class="text-right"><b>Total: @Total</b></td>
-            </tr>
-        </tbody>
-    </table>
-    <a href="@Url.Action("PaymentWithPaypal", "PaymentWithPaypal")" class="btn btn-success">Payment >></a>
+                    Session["SesTotal"] = Total;
+                    <tr>
+                        <td>@item.urun.urunAdi</td>
+                        <td>@item.urun.fiyat</td>
+                        <td>@item.miktar</td>
+                        <td>@lineTotal</td>
+                    </tr>
+                }
 
-}
+                <tr>
+                    <td colspan="4" class="text-right"><b>Sipariş Tutarı: @Total</b></td>
+                </tr>
+            </tbody>
+        </table>
+        <a href="@Url.Action("PaymentWithPaypal", "PaymentWithPaypal")" class="btn btn-primary btn-xl js-scroll-trigger">Ödemeye Geç</a>
+
+    }
+</div>

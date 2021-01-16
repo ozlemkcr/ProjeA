@@ -1,4 +1,4 @@
-﻿@model IEnumerable<WebApplication2.DAL.uyeTable>
+﻿@model List<WebApplication2.DAL.uyeTable>
 @{
     ViewBag.Title = "Uye";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
@@ -42,7 +42,7 @@
                     {
                         int count = 1;
                         <tr>
-                            <td>@count</td>
+                            <td>@(Model.IndexOf(item)+1)</td>
                             <td>@item.uyeAd</td>
                             <td>@item.uyeSoyad</td>
                             <td>@item.uyeEmail</td>

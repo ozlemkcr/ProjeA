@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using WebApplication2.DAL;
@@ -29,41 +30,70 @@ namespace WebApplication2.Controllers
         {
             return View();
         }
+
+        ////////////////////// Kategoriler
+        
         public ActionResult Kategoriler()
         {
-            List<kategoriTable> allKategoriler = _unitOfWork.GetRepositoryInstance<kategoriTable>().GetAllRecordsIQueryable().Where(i => i.isDelete == false).ToList();
-            return View(allKategoriler);
+            //List<kategoriTable> allKategoriler = _unitOfWork.GetRepositoryInstance<kategoriTable>().GetAllRecordsIQueryable().Where(i => i.isDelete == false).ToList();
+            return View(_unitOfWork.GetRepositoryInstance<kategoriTable>().GetProduct());
+           // return View(allKategoriler);
         }
-        public ActionResult AddKategori()
+        public ActionResult KategoriEkle()
         {
-            return UpdateKategori(0);
+            return View();
         }
-        public ActionResult UpdateKategori(int kategoriId)
+        [HttpPost]
+        public ActionResult KategoriEkle(kategoriTable tbl, HttpPostedFileBase file)
         {
-            KategoriDetay kd;
-            if (kategoriId != null)
-            {
-                kd = JsonConvert.DeserializeObject<KategoriDetay>(JsonConvert.SerializeObject(_unitOfWork.GetRepositoryInstance<kategoriTable>().GetFirstorDefault(kategoriId)));
-            }
-            else
-            {
-                kd = new KategoriDetay();
-            }
-            return View("UpdateKategori", kd);
+            _unitOfWork.GetRepositoryInstance<kategoriTable>().Add(tbl);
+            return RedirectToAction("Kategoriler");
+        }
+        //public ActionResult AddKategori()
+        //{
+        //    return UpdateKategori(0);
+        //}
+        //public ActionResult UpdateKategori(int kategoriId)
+        //{
+        //    KategoriDetay kd;
+        //    if (kategoriId != null)
+        //    {
+        //        kd = JsonConvert.DeserializeObject<KategoriDetay>(JsonConvert.SerializeObject(_unitOfWork.GetRepositoryInstance<kategoriTable>().GetFirstorDefault(kategoriId)));
+        //    }
+        //    else
+        //    {
+        //        kd = new KategoriDetay();
+        //    }
+        //    return View("UpdateKategori", kd);
 
-        }
-        public ActionResult kategoriDuzenle(int katid)
+        //}
+        public ActionResult KategoriDuzenle(int katid)
         {
             return View(_unitOfWork.GetRepositoryInstance<kategoriTable>().GetFirstorDefault(katid));
 
         }
         [HttpPost]
-        public ActionResult kategoriDuzenle(kategoriTable tbl)
+        public ActionResult KategoriDuzenle(kategoriTable tbl)
         {
             _unitOfWork.GetRepositoryInstance<kategoriTable>().Update(tbl);
             return RedirectToAction("Kategoriler");
 
         }
+        public ActionResult KategoriSil(int katid)
+        {
+            return View(_unitOfWork.GetRepositoryInstance<kategoriTable>().GetFirstorDefault(katid));
+
+        }
+        [HttpPost]
+        public ActionResult KategoriSil(kategoriTable tbl)
+        {
+            _unitOfWork.GetRepositoryInstance<kategoriTable>().Remove(tbl);
+            return RedirectToAction("Kategoriler");
+
+        }
+
+        ////////////////////// Uyeler
+
         public ActionResult Uye()
         {
             return View(_unitOfWork.GetRepositoryInstance<uyeTable>().GetProduct());
@@ -93,6 +123,21 @@ namespace WebApplication2.Controllers
             return RedirectToAction("Uye");
 
         }
+        public ActionResult UyeSil(int uyeid)
+        {
+            return View(_unitOfWork.GetRepositoryInstance<uyeTable>().GetFirstorDefault(uyeid));
+
+        }
+        [HttpPost]
+        public ActionResult UyeSil(uyeTable tbl, HttpPostedFileBase file)
+        {
+            _unitOfWork.GetRepositoryInstance<uyeTable>().Remove(tbl);
+            return RedirectToAction("Uye");
+
+        }
+
+        //////////////////// Urunler
+        
         public ActionResult Urun()
         {
             return View(_unitOfWork.GetRepositoryInstance<urunTable>().GetProduct());
@@ -102,23 +147,27 @@ namespace WebApplication2.Controllers
         {
             ViewBag.kategoriList = GetKategori();
             return View(_unitOfWork.GetRepositoryInstance<urunTable>().GetFirstorDefault(urunid));
-
         }
         [HttpPost]
         public ActionResult UrunDuzenle(urunTable tbl, HttpPostedFileBase file)
         {
+            //string temp = _unitOfWork.GetRepositoryInstance<urunTable>().GetFirstorDefault(tbl.urunId).urunResmi;
             string pic = null;
             if (file != null)
             {
                 pic = System.IO.Path.GetFileName(file.FileName);
                 string path = System.IO.Path.Combine(Server.MapPath("../UrunImage/"), pic);
                 file.SaveAs(path);
+                tbl.urunResmi = pic;
+
             }
-            tbl.urunResmi = file != null?pic: tbl.urunResmi;
+            //else
+            //{
+            //    tbl.urunResmi = temp;
+            //}
             tbl.degisimTarihi = DateTime.Now;
             _unitOfWork.GetRepositoryInstance<urunTable>().Update(tbl);
             return RedirectToAction("Urun");
-
         }
         public ActionResult UrunEkle()
         {
@@ -139,6 +188,17 @@ namespace WebApplication2.Controllers
             tbl.urunResmi = pic;
             tbl.eklenmeTarihi = DateTime.Now;
             _unitOfWork.GetRepositoryInstance<urunTable>().Add(tbl);
+            return RedirectToAction("Urun");
+
+        }
+        public ActionResult UrunSil(int urunid)
+        {
+            return View(_unitOfWork.GetRepositoryInstance<urunTable>().GetFirstorDefault(urunid));
+        }
+        [HttpPost ]
+        public ActionResult UrunSil(urunTable tbl, HttpPostedFileBase file)
+        {
+            _unitOfWork.GetRepositoryInstance<urunTable>().Remove(tbl);
             return RedirectToAction("Urun");
 
         }

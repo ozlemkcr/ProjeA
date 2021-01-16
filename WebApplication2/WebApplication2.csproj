@@ -1793,19 +1793,21 @@
     <Content Include="AdminStyle\vendor\jquery\jquery.min.js" />
     <Content Include="AdminStyle\vendor\jquery\jquery.slim.js" />
     <Content Include="AdminStyle\vendor\jquery\jquery.slim.min.js" />
+    <Content Include="Content\css\bootstrap-responsive.min.css" />
     <Content Include="Content\css\bootstrap.min.css" />
-    <Content Include="Content\css\custom.css" />
+    <Content Include="Content\css\bootstrappage.css" />
+    <Content Include="Content\css\flexslider.css" />
     <Content Include="Content\css\login.css" />
-    <Content Include="Content\css\responsive.css" />
-    <Content Include="Content\css\style.css" />
+    <Content Include="Content\css\main.css" />
     <Content Include="Content\css\styles.css" />
-    <Content Include="Content\css\trendyol.css" />
     <Content Include="Content\css\urunEkle.css" />
+    <Content Include="Content\images\13.jpg" />
     <Content Include="Content\images\2.jpg" />
     <Content Include="Content\images\4.jpg" />
     <Content Include="Content\images\basket.png" />
     <Content Include="Content\images\bg-masthead.jpg" />
     <Content Include="Content\images\favicon.ico" />
+    <Content Include="Content\images\loginback.jpg" />
     <Content Include="Content\images\logout.png" />
     <Content Include="Content\images\portfolio\thumbnails\b1.jpg" />
     <Content Include="Content\images\portfolio\thumbnails\h4.jpg" />
@@ -1826,8 +1828,12 @@
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
     <Content Include="Global.asax" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\jquery-1.7.2.min.js" />
+    <Content Include="Scripts\jquery.scrolltotop.js" />
     <Content Include="Scripts\login.js" />
     <Content Include="Scripts\scripts.js" />
+    <Content Include="Scripts\superfish.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -2058,11 +2064,10 @@
     <Content Include="Views\Shared\_AdminLayout.cshtml" />
     <Content Include="Views\Admin\Dashboard.cshtml" />
     <Content Include="Views\Admin\Kategoriler.cshtml" />
-    <Content Include="Views\Admin\UpdateKategori.cshtml" />
+    <Content Include="Views\Admin\UpdateKategori1.cshtml" />
     <Content Include="Views\Admin\Urun.cshtml" />
-    <Content Include="Views\Admin\UrunDuzenle.cshtml" />
     <Content Include="Views\Admin\UrunEkle.cshtml" />
-    <Content Include="Views\Admin\kategoriDuzenle.cshtml" />
+    <Content Include="Views\Admin\kategoriDuzenle1.cshtml" />
     <Content Include="Views\Home\Checkout.cshtml" />
     <Content Include="Views\Home\CheckoutDetay.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
@@ -2074,6 +2079,14 @@
     <Content Include="Views\Guvenlik\GirisYap.cshtml" />
     <Content Include="Views\Guvenlik\UyeOl.cshtml" />
     <Content Include="Views\Guvenlik\uyeOl2.cshtml" />
+    <Content Include="Views\Admin\UrunDuzenle.cshtml" />
+    <Content Include="Views\Admin\KategoriEkle.cshtml" />
+    <Content Include="Views\Admin\KategoriDuzenle.cshtml" />
+    <Content Include="Views\Home\categories1.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Admin\UrunSil.cshtml" />
+    <Content Include="Views\Admin\UyeSil.cshtml" />
+    <Content Include="Views\Admin\KategoriSil.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

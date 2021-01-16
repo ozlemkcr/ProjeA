@@ -98,6 +98,7 @@ namespace WebApplication2.Repository
                 _dbSet.Attach(entity);
             }
             _dbSet.Remove(entity);
+            _DBEntity.SaveChanges();
         }
 
         public void RemovebyWhereClause(Expression<Func<Table_entity, bool>> wherePredict)

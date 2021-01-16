@@ -23,8 +23,6 @@ namespace WebApplication2.DAL
         public int urunId { get; set; }
         public string urunAdi { get; set; }
         public Nullable<int> kategoriId { get; set; }
-        public Nullable<bool> isActive { get; set; }
-        public Nullable<bool> isDelete { get; set; }
         public Nullable<System.DateTime> eklenmeTarihi { get; set; }
         public Nullable<System.DateTime> degisimTarihi { get; set; }
         public string aciklama { get; set; }

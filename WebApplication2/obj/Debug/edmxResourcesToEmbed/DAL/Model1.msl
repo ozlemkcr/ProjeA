@@ -35,16 +35,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="kategoriTables">
-      <EntityTypeMapping TypeName="eTicaretDbModel.kategoriTable">
-        <MappingFragment StoreEntitySet="kategoriTable">
-          <ScalarProperty Name="kategoriId" ColumnName="kategoriId" />
-          <ScalarProperty Name="kategoriAdi" ColumnName="kategoriAdi" />
-          <ScalarProperty Name="isActive" ColumnName="isActive" />
-          <ScalarProperty Name="isDelete" ColumnName="isDelete" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="rolTables">
       <EntityTypeMapping TypeName="eTicaretDbModel.rolTable">
         <MappingFragment StoreEntitySet="rolTable">
@@ -71,24 +61,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="urunTables">
-      <EntityTypeMapping TypeName="eTicaretDbModel.urunTable">
-        <MappingFragment StoreEntitySet="urunTable">
-          <ScalarProperty Name="fiyat" ColumnName="fiyat" />
-          <ScalarProperty Name="miktar" ColumnName="miktar" />
-          <ScalarProperty Name="ozellik" ColumnName="ozellik" />
-          <ScalarProperty Name="urunResmi" ColumnName="urunResmi" />
-          <ScalarProperty Name="aciklama" ColumnName="aciklama" />
-          <ScalarProperty Name="degisimTarihi" ColumnName="degisimTarihi" />
-          <ScalarProperty Name="eklenmeTarihi" ColumnName="eklenmeTarihi" />
-          <ScalarProperty Name="isDelete" ColumnName="isDelete" />
-          <ScalarProperty Name="isActive" ColumnName="isActive" />
-          <ScalarProperty Name="kategoriId" ColumnName="kategoriId" />
-          <ScalarProperty Name="urunAdi" ColumnName="urunAdi" />
-          <ScalarProperty Name="urunId" ColumnName="urunId" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="uyeTables">
       <EntityTypeMapping TypeName="eTicaretDbModel.uyeTable">
         <MappingFragment StoreEntitySet="uyeTable">
@@ -100,6 +72,30 @@
           <ScalarProperty Name="uyeSoyad" ColumnName="uyeSoyad" />
           <ScalarProperty Name="uyeAd" ColumnName="uyeAd" />
           <ScalarProperty Name="uyeId" ColumnName="uyeId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="urunTables">
+      <EntityTypeMapping TypeName="eTicaretDbModel.urunTable">
+        <MappingFragment StoreEntitySet="urunTable">
+          <ScalarProperty Name="fiyat" ColumnName="fiyat" />
+          <ScalarProperty Name="miktar" ColumnName="miktar" />
+          <ScalarProperty Name="ozellik" ColumnName="ozellik" />
+          <ScalarProperty Name="urunResmi" ColumnName="urunResmi" />
+          <ScalarProperty Name="aciklama" ColumnName="aciklama" />
+          <ScalarProperty Name="degisimTarihi" ColumnName="degisimTarihi" />
+          <ScalarProperty Name="eklenmeTarihi" ColumnName="eklenmeTarihi" />
+          <ScalarProperty Name="kategoriId" ColumnName="kategoriId" />
+          <ScalarProperty Name="urunAdi" ColumnName="urunAdi" />
+          <ScalarProperty Name="urunId" ColumnName="urunId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="kategoriTables">
+      <EntityTypeMapping TypeName="eTicaretDbModel.kategoriTable">
+        <MappingFragment StoreEntitySet="kategoriTable">
+          <ScalarProperty Name="kategoriAdi" ColumnName="kategoriAdi" />
+          <ScalarProperty Name="kategoriId" ColumnName="kategoriId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

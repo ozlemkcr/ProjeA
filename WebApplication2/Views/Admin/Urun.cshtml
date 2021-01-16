@@ -1,4 +1,4 @@
-﻿@model IEnumerable<WebApplication2.DAL.urunTable>
+﻿@model List<WebApplication2.DAL.urunTable>
 
 @{
     ViewBag.Title = "Ürünler";
@@ -29,11 +29,14 @@
                     </tr>
                 </tfoot>
                 <tbody>
+
+
                     @foreach (var item in Model)
                     {
-                        int count = 1;
+                        int count = 0;
+
                         <tr>
-                            <td>@count</td>
+                            <td>@(Model.IndexOf(item)+1)</td>
                             <td>@item.urunAdi</td>
                             <td>
                                 @Html.ActionLink("Duzenle", "UrunDuzenle", new { UrunId = item.urunId })

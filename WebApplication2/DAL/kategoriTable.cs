@@ -22,8 +22,6 @@ namespace WebApplication2.DAL
     
         public int kategoriId { get; set; }
         public string kategoriAdi { get; set; }
-        public Nullable<bool> isActive { get; set; }
-        public Nullable<bool> isDelete { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<urunTable> urunTables { get; set; }

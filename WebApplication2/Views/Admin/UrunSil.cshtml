@@ -1,0 +1,81 @@
+﻿@model WebApplication2.DAL.urunTable
+
+@{
+    ViewBag.Title = "Ürünü Sil";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h3>Ürünü silmek istediğine emin misin?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            <label class="control-label col-md-5">Ürün Adı</label>
+        </dt>
+
+        <dd>
+            <div class="col-md-6">
+                @Html.DisplayFor(model => model.urunAdi)
+            </div>
+        </dd>
+
+        <dt>
+            <label class="control-label col-md-5">Eklenme Tarihi</label>
+        </dt>
+
+        <dd>
+            <div class="col-md-6">
+                @Html.DisplayFor(model => model.eklenmeTarihi)
+            </div>
+        </dd>
+
+        <dt>
+            <label class="control-label col-md-5">Değişme Tarihi</label>
+        </dt>
+
+        <dd>
+            <div class="col-md-6">
+                @Html.DisplayFor(model => model.degisimTarihi)
+            </div>
+        </dd>
+
+        <dt>
+            <label class="control-label col-md-5">Açıklama</label>
+        </dt>
+
+        <dd>
+            <div class="col-md-6">
+                @Html.DisplayFor(model => model.aciklama)
+            </div>
+        </dd>
+
+        <dt>
+            <label class="control-label col-md-5">Özelliği</label>
+        </dt>
+
+        <dd>
+            <div class="col-md-6">
+                @Html.DisplayFor(model => model.ozellik)
+            </div>
+        </dd>
+
+        <dt>
+            <label class="control-label col-md-5">Fiyatı</label>
+        </dt>
+
+        <dd>
+            <div class="col-md-6">
+                @Html.DisplayFor(model => model.fiyat)
+            </div>
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-primary" />
+        </div>
+    }
+</div>

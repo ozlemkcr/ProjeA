@@ -17,11 +17,22 @@ namespace WebApplication2.Controllers
         {
             return View("Index");
 
-        }        
+        }
+        public ActionResult About()
+        {
+            return View("About");
+
+        }
         public ActionResult Categories(string search, int? page)
         {
             HomeKategorilerViewModel model = new HomeKategorilerViewModel();
-            return View(model.CreateModel(search, 2, page));
+            return View(model.CreateModel(search, 8, page));
+
+        }
+
+        public ActionResult categories1()
+        {
+            return View();
 
         }
         public ActionResult Checkout()
@@ -34,28 +45,32 @@ namespace WebApplication2.Controllers
         }
         public ActionResult MiktarAzalt(int urunid)
         {
-            if (Session["cart"] == null)
+            if (Session["cart"] != null)
             {
                 List<Item> cart = (List<Item>)Session["cart"];
                 var Urun = ctx.urunTables.Find(urunid);
                 foreach (var item in cart )
                 {
-                    int x = item.miktar;
-                    if(x >0)
+                    if(item.urun.urunId == urunid)
                     {
-                        cart.Remove(item);
-                        cart.Add(new Item()
+                        int x = item.miktar;
+                        if (x > 0)
                         {
-                            urun = Urun,
-                            miktar = x
-                        });
-                    }
-                    break;
+                            cart.Remove(item);
+                            cart.Add(new Item()
+                            {
+                                urun = Urun,
+                                miktar = x - 1
+                            });
+
+                        }
+                        break;
+                    }                  
                 }
             }
             return Redirect("Checkout");
         }
-        public ActionResult AddtoCart(int urunid )
+        public ActionResult AddtoCart(int urunid,string url )
         {
                 if (Session["cart"] == null)
                 {
@@ -71,33 +86,42 @@ namespace WebApplication2.Controllers
                 else
                 {
                     List<Item> cart = (List<Item>)Session["cart"];
+                    var count = cart.Count();
                     var Urun = ctx.urunTables.Find(urunid);
-                    foreach (var item in cart)
+                    
+                    for (int i =0;i<count;i++)
                     {
-                        if (item.urun.urunId == urunid)
+                        if (cart[i].urun.urunId == urunid)
                         {
-                            int x = item.miktar;
-                            cart.Remove(item);
+                            int x = cart[i].miktar;
+                            cart.Remove(cart[i]);
                             cart.Add(new Item()
                             {
                                 urun = Urun,
                                 miktar = x + 1
                             });
+                            
                             break;
                         }
                         else
                         {
-                            cart.Add(new Item()
+                            var prd = cart.Where(y => y.urun.urunId == urunid).SingleOrDefault();
+                            if(prd == null)
                             {
-                                urun = Urun,
-                                miktar = 1
-                            });
+                                cart.Add(new Item()
+                                {
+                                    urun = Urun,
+                                    miktar = 1
+                                });
+                            }
+                            
                         }
+                        
                     }
 
                     Session["cart"] = cart;
                 }
-                return Redirect("Categories");
+                return Redirect(url);
 
             
         }

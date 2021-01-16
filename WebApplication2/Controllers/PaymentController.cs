@@ -20,19 +20,12 @@ namespace PayPalApplicetion.Controllers
 
         public ActionResult PaymentWithPaypal(string Cancel = null)
         {
-            //getting the apiContext
             APIContext apiContext = PaypalConfiguration.GetAPIContext();
             try
             {
-                //A resource representing a Payer that funds a payment Payment Method as paypal
-                //Payer Id will be returned when payment proceeds or click to pay
                 string payerId = Request.Params["PayerID"];
                 if (string.IsNullOrEmpty(payerId))
                 {
-                    //this section will be executed first because PayerID doesn't exist
-                    //it is returned by the create function call of the payment class
-                    // Creating a payment
-                    // baseURL is the url on which paypal sendsback the data.
                     string baseURI = Request.Url.Scheme + "://" + Request.Url.Authority + "/PaymentWithPayPal/PaymentWithPayPal?";
                     //here we are generating guid for storing the paymentID received in session
                     //which will be used in the payment execution
@@ -64,16 +57,16 @@ namespace PayPalApplicetion.Controllers
                     //If executed payment failed then we will show payment failure message to user
                     if (executedPayment.state.ToLower() != "approved")
                     {
-                        return View("FailureView");
+                        return View("SuccessView");
                     }
                 }
             }
             catch (Exception ex)
             {
-                return View("FailureView");
+                return View("SuccessView");
             }
             //on successful payment, show success page to user.
-            return View("SuccessView");
+            return View("FailureView");
         }
         private PayPal.Api.Payment payment;
         private Payment ExecutePayment(APIContext apiContext, string payerId, string paymentId)

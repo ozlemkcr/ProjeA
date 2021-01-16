@@ -1,14 +1,19 @@
 ﻿@using WebApplication2.Models.Home;
 @{
-    ViewBag.Title = "Checkout";
+    ViewBag.Title = "Sepet";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<header class="masthead1">
+    <div class="container h-100">
+    </div>
+</header>
+<br/>
 
-    <h2>Checkout</h2>
+<div style="width:80%; margin:auto;">
     @if (Session["cart"] == null)
     {
         <div class="alert alert-danger">
-            <strong>No product added to cart!</strong>
+            <strong>Sepetiniz Boş!</strong>
         </div>
 
     }
@@ -17,9 +22,10 @@
         <table class="table table-bordered">
             <thead>
                 <tr>
-                    <th>Product</th>
-                    <th>Quantity</th>
-                    <th>Add</th>
+                    <th>Ürün</th>
+                    <th>Miktar</th>
+                    <th>Ekle/Çıkar</th>
+                    <th>Ürün Resmi</th>
                 </tr>
             </thead>
             <tbody>
@@ -29,19 +35,21 @@
                         <td>@item.urun.urunAdi</td>
                         <td>@item.miktar</td>
                         <td>
-                            <a href="@Url.Action("AddToCart", "Home", new { productId = item.urun.urunId, url = "Checkout" })">
+                            <a href="@Url.Action("AddtoCart", "Home", new { urunId = item.urun.urunId, url = "Checkout" })">
                                 <i class="fa fa-plus"></i>
                             </a>
-                            <a href="@Url.Action("MiktarAzalt", "Home", new { productId = item.urun.urunId })">
+                            <a href="@Url.Action("MiktarAzalt", "Home", new { urunId = item.urun.urunId })">
                                 <i class="fa fa-minus"></i>
                             </a>
                         </td>
+                        <td><img style="max-height:100px; border-radius:5px;" class="img-responsive" src="../UrunImage/@item.urun.urunResmi" /></td>
                     </tr>
                 }
 
             </tbody>
         </table>
-        <a class="btn btn-success" href="@Url.Action("CheckoutDetay", "Home")">Checkout >></a>
-
+        <a class="btn btn-primary btn-xl js-scroll-trigger" href="@Url.Action("CheckoutDetay", "Home")">Sepeti Onayla</a>
     }
+</div>
+   
 

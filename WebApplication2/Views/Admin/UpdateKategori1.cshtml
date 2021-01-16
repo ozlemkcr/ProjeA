@@ -1,0 +1,37 @@
+﻿@model WebApplication2.Models.KategoriDetay
+@{
+    ViewBag.Title = "Kategori Ekle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container-fluid">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="#">Dashboard</a>
+        </li>
+        <li class="breadcrumb-item active"> Kategoriler</li>
+        <li class="breadcrumb-item active">Yeni Kategori Ekle</li>
+    </ol>
+
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <i class="fas fa-table"></i>
+            Yeni Kategori Ekle
+            
+        </div>
+        <div class="card-body">
+            @using(Html.BeginForm("UpdateKategori","Admin", FormMethod.Post, new { enctype="multipart/form-data"}))
+            {
+                @Html.HiddenFor(m => m.kategoriId)
+                <div class="form-group">
+                    <label class="control-label">Kategori Adı</label>
+                    @Html.TextAreaFor(m=>m.kategoriAdi, new { @class="form-control",placeholder="Kategori Adı Giriniz", required="required",autofocus="autofocus"})
+                    @Html.ValidationMessageFor(m=>m.kategoriAdi,"", new {@class="text-danger"})
+                </div>
+                <a onclick="window.history.back();" class="btn btn-danger">Geri</a>
+                <input type="submit" class="btn btn-primary" value="Kaydet"/>
+            }
+        </div>
+    </div>
+</div>
+

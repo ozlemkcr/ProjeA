@@ -37,8 +37,6 @@
     </Key>
     <Property Name="kategoriId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="kategoriAdi" Type="varchar" MaxLength="500" />
-    <Property Name="isActive" Type="bit" />
-    <Property Name="isDelete" Type="bit" />
   </EntityType>
   <EntityType Name="rolTable">
     <Key>
@@ -62,8 +60,6 @@
     <Property Name="urunId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="urunAdi" Type="varchar" MaxLength="500" />
     <Property Name="kategoriId" Type="int" />
-    <Property Name="isActive" Type="bit" />
-    <Property Name="isDelete" Type="bit" />
     <Property Name="eklenmeTarihi" Type="datetime" />
     <Property Name="degisimTarihi" Type="datetime" />
     <Property Name="aciklama" Type="varchar" MaxLength="500" />

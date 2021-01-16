@@ -1,7 +1,8 @@
 ﻿body {
     padding-top: 4.2rem;
     padding-bottom: 4.2rem;
-    background: rgba(0, 0, 0, 0.76);
+    /*background: rgba(0, 0, 0, 0.76);*/
+    background: linear-gradient(to bottom, rgba(157, 148, 141, 0.6) 0%, rgba(157, 148, 141, 0.6) 100%), url("../images/loginback.jpg");
 }
 
 a {

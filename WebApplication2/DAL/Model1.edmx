@@ -42,8 +42,6 @@
           </Key>
           <Property Name="kategoriId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="kategoriAdi" Type="varchar" MaxLength="500" />
-          <Property Name="isActive" Type="bit" />
-          <Property Name="isDelete" Type="bit" />
         </EntityType>
         <EntityType Name="rolTable">
           <Key>
@@ -67,8 +65,6 @@
           <Property Name="urunId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="urunAdi" Type="varchar" MaxLength="500" />
           <Property Name="kategoriId" Type="int" />
-          <Property Name="isActive" Type="bit" />
-          <Property Name="isDelete" Type="bit" />
           <Property Name="eklenmeTarihi" Type="datetime" />
           <Property Name="degisimTarihi" Type="datetime" />
           <Property Name="aciklama" Type="varchar" MaxLength="500" />
@@ -194,16 +190,6 @@
           <Property Name="kartStatuId" Type="Int32" />
           <NavigationProperty Name="urunTable" Relationship="eTicaretDbModel.FK__kartTable__urunI__32E0915F" FromRole="kartTable" ToRole="urunTable" />
         </EntityType>
-        <EntityType Name="kategoriTable">
-          <Key>
-            <PropertyRef Name="kategoriId" />
-          </Key>
-          <Property Name="kategoriId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="kategoriAdi" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="isActive" Type="Boolean" />
-          <Property Name="isDelete" Type="Boolean" />
-          <NavigationProperty Name="urunTables" Relationship="eTicaretDbModel.FK__urunTable__kateg__267ABA7A" FromRole="kategoriTable" ToRole="urunTable" />
-        </EntityType>
         <EntityType Name="rolTable">
           <Key>
             <PropertyRef Name="rolId" />
@@ -231,68 +217,25 @@
           <EntitySet Name="alisveriDetays" EntityType="Self.alisveriDetay" />
           <EntitySet Name="kartStatuTables" EntityType="Self.kartStatuTable" />
           <EntitySet Name="kartTables" EntityType="Self.kartTable" />
-          <EntitySet Name="kategoriTables" EntityType="Self.kategoriTable" />
           <EntitySet Name="rolTables" EntityType="Self.rolTable" />
           <EntitySet Name="slideImageTables" EntityType="Self.slideImageTable" />
           <EntitySet Name="uyeRolus" EntityType="Self.uyeRolu" />
-          <EntitySet Name="urunTables" EntityType="eTicaretDbModel.urunTable" />
-          <AssociationSet Name="FK__kartTable__urunI__32E0915F" Association="eTicaretDbModel.FK__kartTable__urunI__32E0915F">
-            <End Role="urunTable" EntitySet="urunTables" />
-            <End Role="kartTable" EntitySet="kartTables" />
-          </AssociationSet>
-          <AssociationSet Name="FK__urunTable__kateg__267ABA7A" Association="eTicaretDbModel.FK__urunTable__kateg__267ABA7A">
-            <End Role="kategoriTable" EntitySet="kategoriTables" />
-            <End Role="urunTable" EntitySet="urunTables" />
-          </AssociationSet>
           <EntitySet Name="uyeTables" EntityType="eTicaretDbModel.uyeTable" />
           <AssociationSet Name="FK__alisveriD__uyeId__2E1BDC42" Association="eTicaretDbModel.FK__alisveriD__uyeId__2E1BDC42">
             <End Role="uyeTable" EntitySet="uyeTables" />
             <End Role="alisveriDetay" EntitySet="alisveriDetays" />
           </AssociationSet>
+          <EntitySet Name="urunTables" EntityType="eTicaretDbModel.urunTable" />
+          <AssociationSet Name="FK__kartTable__urunI__32E0915F" Association="eTicaretDbModel.FK__kartTable__urunI__32E0915F">
+            <End Role="urunTable" EntitySet="urunTables" />
+            <End Role="kartTable" EntitySet="kartTables" />
+          </AssociationSet>
+          <EntitySet Name="kategoriTables" EntityType="eTicaretDbModel.kategoriTable" />
+          <AssociationSet Name="FK__urunTable__kateg__267ABA7A" Association="eTicaretDbModel.FK__urunTable__kateg__267ABA7A">
+            <End Role="kategoriTable" EntitySet="kategoriTables" />
+            <End Role="urunTable" EntitySet="urunTables" />
+          </AssociationSet>
           </EntityContainer>
-        <EntityType Name="urunTable">
-          <Key>
-            <PropertyRef Name="urunId" />
-          </Key>
-          <Property Name="urunId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="urunAdi" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="kategoriId" Type="Int32" />
-          <Property Name="isActive" Type="Boolean" />
-          <Property Name="isDelete" Type="Boolean" />
-          <Property Name="eklenmeTarihi" Type="DateTime" Precision="3" />
-          <Property Name="degisimTarihi" Type="DateTime" Precision="3" />
-          <Property Name="aciklama" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="urunResmi" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="ozellik" Type="Boolean" />
-          <Property Name="miktar" Type="Int32" />
-          <Property Name="fiyat" Type="Decimal" Precision="18" Scale="0" />
-          <NavigationProperty Name="kartTables" Relationship="eTicaretDbModel.FK__kartTable__urunI__32E0915F" FromRole="urunTable" ToRole="kartTable" />
-          <NavigationProperty Name="kategoriTable" Relationship="eTicaretDbModel.FK__urunTable__kateg__267ABA7A" FromRole="urunTable" ToRole="kategoriTable" />
-        </EntityType>
-        <Association Name="FK__kartTable__urunI__32E0915F">
-          <End Type="eTicaretDbModel.urunTable" Role="urunTable" Multiplicity="0..1" />
-          <End Type="eTicaretDbModel.kartTable" Role="kartTable" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="urunTable">
-              <PropertyRef Name="urunId" />
-            </Principal>
-            <Dependent Role="kartTable">
-              <PropertyRef Name="urunId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__urunTable__kateg__267ABA7A">
-          <End Type="eTicaretDbModel.kategoriTable" Role="kategoriTable" Multiplicity="0..1" />
-          <End Type="eTicaretDbModel.urunTable" Role="urunTable" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="kategoriTable">
-              <PropertyRef Name="kategoriId" />
-            </Principal>
-            <Dependent Role="urunTable">
-              <PropertyRef Name="kategoriId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="uyeTable">
           <Key>
             <PropertyRef Name="uyeId" />
@@ -316,6 +259,55 @@
             </Principal>
             <Dependent Role="alisveriDetay">
               <PropertyRef Name="uyeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="urunTable">
+          <Key>
+            <PropertyRef Name="urunId" />
+          </Key>
+          <Property Name="urunId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="urunAdi" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="kategoriId" Type="Int32" />
+          <Property Name="eklenmeTarihi" Type="DateTime" Precision="3" />
+          <Property Name="degisimTarihi" Type="DateTime" Precision="3" />
+          <Property Name="aciklama" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="urunResmi" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ozellik" Type="Boolean" />
+          <Property Name="miktar" Type="Int32" />
+          <Property Name="fiyat" Type="Decimal" Precision="18" Scale="0" />
+          <NavigationProperty Name="kartTables" Relationship="eTicaretDbModel.FK__kartTable__urunI__32E0915F" FromRole="urunTable" ToRole="kartTable" />
+          <NavigationProperty Name="kategoriTable" Relationship="eTicaretDbModel.FK__urunTable__kateg__267ABA7A" FromRole="urunTable" ToRole="kategoriTable" />
+        </EntityType>
+        <Association Name="FK__kartTable__urunI__32E0915F">
+          <End Type="eTicaretDbModel.urunTable" Role="urunTable" Multiplicity="0..1" />
+          <End Type="eTicaretDbModel.kartTable" Role="kartTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="urunTable">
+              <PropertyRef Name="urunId" />
+            </Principal>
+            <Dependent Role="kartTable">
+              <PropertyRef Name="urunId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="kategoriTable">
+          <Key>
+            <PropertyRef Name="kategoriId" />
+          </Key>
+          <Property Name="kategoriId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="kategoriAdi" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="urunTables" Relationship="eTicaretDbModel.FK__urunTable__kateg__267ABA7A" FromRole="kategoriTable" ToRole="urunTable" />
+        </EntityType>
+        <Association Name="FK__urunTable__kateg__267ABA7A">
+          <End Type="eTicaretDbModel.kategoriTable" Role="kategoriTable" Multiplicity="0..1" />
+          <End Type="eTicaretDbModel.urunTable" Role="urunTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="kategoriTable">
+              <PropertyRef Name="kategoriId" />
+            </Principal>
+            <Dependent Role="urunTable">
+              <PropertyRef Name="kategoriId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -359,16 +351,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="kategoriTables">
-            <EntityTypeMapping TypeName="eTicaretDbModel.kategoriTable">
-              <MappingFragment StoreEntitySet="kategoriTable">
-                <ScalarProperty Name="kategoriId" ColumnName="kategoriId" />
-                <ScalarProperty Name="kategoriAdi" ColumnName="kategoriAdi" />
-                <ScalarProperty Name="isActive" ColumnName="isActive" />
-                <ScalarProperty Name="isDelete" ColumnName="isDelete" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="rolTables">
             <EntityTypeMapping TypeName="eTicaretDbModel.rolTable">
               <MappingFragment StoreEntitySet="rolTable">
@@ -395,24 +377,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="urunTables">
-            <EntityTypeMapping TypeName="eTicaretDbModel.urunTable">
-              <MappingFragment StoreEntitySet="urunTable">
-                <ScalarProperty Name="fiyat" ColumnName="fiyat" />
-                <ScalarProperty Name="miktar" ColumnName="miktar" />
-                <ScalarProperty Name="ozellik" ColumnName="ozellik" />
-                <ScalarProperty Name="urunResmi" ColumnName="urunResmi" />
-                <ScalarProperty Name="aciklama" ColumnName="aciklama" />
-                <ScalarProperty Name="degisimTarihi" ColumnName="degisimTarihi" />
-                <ScalarProperty Name="eklenmeTarihi" ColumnName="eklenmeTarihi" />
-                <ScalarProperty Name="isDelete" ColumnName="isDelete" />
-                <ScalarProperty Name="isActive" ColumnName="isActive" />
-                <ScalarProperty Name="kategoriId" ColumnName="kategoriId" />
-                <ScalarProperty Name="urunAdi" ColumnName="urunAdi" />
-                <ScalarProperty Name="urunId" ColumnName="urunId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="uyeTables">
             <EntityTypeMapping TypeName="eTicaretDbModel.uyeTable">
               <MappingFragment StoreEntitySet="uyeTable">
@@ -424,6 +388,30 @@
                 <ScalarProperty Name="uyeSoyad" ColumnName="uyeSoyad" />
                 <ScalarProperty Name="uyeAd" ColumnName="uyeAd" />
                 <ScalarProperty Name="uyeId" ColumnName="uyeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="urunTables">
+            <EntityTypeMapping TypeName="eTicaretDbModel.urunTable">
+              <MappingFragment StoreEntitySet="urunTable">
+                <ScalarProperty Name="fiyat" ColumnName="fiyat" />
+                <ScalarProperty Name="miktar" ColumnName="miktar" />
+                <ScalarProperty Name="ozellik" ColumnName="ozellik" />
+                <ScalarProperty Name="urunResmi" ColumnName="urunResmi" />
+                <ScalarProperty Name="aciklama" ColumnName="aciklama" />
+                <ScalarProperty Name="degisimTarihi" ColumnName="degisimTarihi" />
+                <ScalarProperty Name="eklenmeTarihi" ColumnName="eklenmeTarihi" />
+                <ScalarProperty Name="kategoriId" ColumnName="kategoriId" />
+                <ScalarProperty Name="urunAdi" ColumnName="urunAdi" />
+                <ScalarProperty Name="urunId" ColumnName="urunId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="kategoriTables">
+            <EntityTypeMapping TypeName="eTicaretDbModel.kategoriTable">
+              <MappingFragment StoreEntitySet="kategoriTable">
+                <ScalarProperty Name="kategoriAdi" ColumnName="kategoriAdi" />
+                <ScalarProperty Name="kategoriId" ColumnName="kategoriId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

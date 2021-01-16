@@ -1,5 +1,11 @@
 ﻿@using WebApplication2.Models.Home
+<style>
+    /* Change color of dropdown links on hover */
+    .dropdown-menu li:hover {
+        background-color: #f1f1f1
+    }
 
+</style>
 
 <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
     <div class="container">
@@ -17,17 +23,17 @@
                 }
 
                 <li class="nav-item"><a class="nav-link js-scroll-trigger" href="../Home/Categories">Kategoriler</a></li>
-                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#about">Hakkımızda</a></li>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="../Home/About">Hakkımızda</a></li>
                 <li class="nav-item dropdown">
                     <a data-toggle="dropdown" class="nav-link js-scroll-trigger dropdown-toggle" href="#" title="Sepet"> <img src="../Content/images/basket.png" /></a>
-                    <ul class="dropdown-menu">
+                    <ul style="margin-top:20px;" class="dropdown-menu">
                         @if (Session["cart"] != null)
                         {
                             foreach (var item in (List<Item>)Session["cart"])
                             {
-                                <li><a href="@Url.Action("RemoveFromCart","Home", new {urunid =item.urun.urunId })">@item.urun.urunAdi (@item.miktar)<i class="fa fa-times"></i> </a></li>
+                                <li style="padding: 6px 6px; "><a href="@Url.Action("RemoveFromCart","Home", new {urunid =item.urun.urunId })">@item.urun.urunAdi (@item.miktar)<i style="margin-left:5px;" class="fa fa-times"></i> </a></li>
                             }
-                            <li><a href="@Url.Action("Checkout","Home")">Checkout</a></li>
+                            <li style="padding: 6px 6px; "><a href="@Url.Action("Checkout","Home")">Sepete Git<i style="margin-left:5px;" class="fa fa-arrow-alt-circle-right"></i></a></li>
                         }
 
                     </ul>

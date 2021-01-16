@@ -28,11 +28,11 @@ namespace WebApplication2.DAL
         public virtual DbSet<alisveriDetay> alisveriDetays { get; set; }
         public virtual DbSet<kartStatuTable> kartStatuTables { get; set; }
         public virtual DbSet<kartTable> kartTables { get; set; }
-        public virtual DbSet<kategoriTable> kategoriTables { get; set; }
         public virtual DbSet<rolTable> rolTables { get; set; }
         public virtual DbSet<slideImageTable> slideImageTables { get; set; }
         public virtual DbSet<uyeRolu> uyeRolus { get; set; }
-        public virtual DbSet<urunTable> urunTables { get; set; }
         public virtual DbSet<uyeTable> uyeTables { get; set; }
+        public virtual DbSet<urunTable> urunTables { get; set; }
+        public virtual DbSet<kategoriTable> kategoriTables { get; set; }
     }
 }

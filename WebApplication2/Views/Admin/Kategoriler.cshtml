@@ -11,7 +11,7 @@
         <div class="card-header py-3">
             <i class="fas fa-table"></i>
             Kategoriler
-            <a href="../Admin/AddKategori" class="btn btn-info pull-right">Yeni kategori ekle</a>
+            <a href="../Admin/KategoriEkle" class="btn btn-info pull-right">Yeni kategori ekle</a>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -38,7 +38,7 @@
                                 <td>@item.kategoriAdi</td>
                                 <td>
                                 
-                                @Html.ActionLink("Duzenle", "kategoriDuzenle", new { @class = "btn btn-info pull-right", katid = item.kategoriId  })
+                                @Html.ActionLink("Duzenle", "KategoriDuzenle", new { @class = "btn btn-info pull-right", katid = item.kategoriId  })
                                 @Html.ActionLink("Sil", "kategoriSil", new { @class = "btn btn-info pull-right", katid = item.kategoriId })</td>
                             </tr>
                         }                       

@@ -9,214 +9,156 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<head>
-    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="../Content/css/bootstrap.min.css">
-    <!-- Site CSS -->
-    <link rel="stylesheet" href="../Content/css/style.css">
-    <!-- Responsive CSS -->
-    <link rel="stylesheet" href="../Content/css/responsive.css">
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="../Content/css/custom.css">
-</head>
 <style>
     .product-container {
-        position:relative;
+        position: relative;
+        margin: auto;
+        width: 95%;
     }
-    .product-item .caption h5 {
+
+    .product-item {
+        height: 350px;
+        width: 300px;
+    }
+
+        .product-item .img-responsive {
+            cursor: pointer;
+            align-content: center;
+            max-height: 350px;
+            width: 280px;
+            padding: 20px;
+            position: relative;
+            margin-top: auto;
+            margin-bottom: auto;
+        }
+
+    .caption h5 {
         font-weight: 600;
         font-size: 16px;
-        font-style:italic;
+        font-style: italic;
         line-height: 20px;
         border-top: 2px solid #333;
-        margin-top:10px;
+        margin-top: 10px;
         padding-top: 10px;
     }
-    .product-item .caption .product-item-price {
-        font-size:14px;
-        line-height:16px;
-        font-weight: 400;
+
+    .caption {
+        position: static;
+        bottom: 10%;
     }
-    .product-item .product-item-badge {
+
+        .caption .product-item-price {
+            font-size: 14px;
+            line-height: 16px;
+            font-weight: 400;
+        }
+
+    .product-item-badge {
         position: absolute;
         top: 4px;
         left: 4px;
         padding: 5px 12px 6px;
+        margin-left: 25px;
         color: #fff;
         font-size: 12px;
         line-height: 14px;
         font-weight: 600;
         background: #333;
         -webkit-border-radius: 4px 0 4px 0;
-            -moz-border-radius: 4px 0 4px 0;
-                    border-radius: 4px 0 4px 0;
+        -moz-border-radius: 4px 0 4px 0;
+        border-radius: 4px 0 4px 0;
     }
+
+
+
+        .pagination a {
+            color: black;
+            padding: 8px 16px;
+            text-decoration: none;
+            transition: background-color .3s;
+        }
+
+            .pagination a.active {
+                background-color: #ffffff;
+                color: white;
+            }
+
+            .pagination a:hover:not(.active) {
+                background-color: #ff6a00;
+            }
 </style>
+
+
 <header class="masthead1">
     <div class="container h-100">
     </div>
 </header>
 
-<div class="olContent f1"><h2 style="color:black;">Ürün veya kategori ara</h2></div>
-<form method="post">
-    <div class="olSearch fr">
-        <input type="text" name="search" placeholder="Buraya Giriniz"  class="inputCom form-control" />
-        <div class="searchIcon">
-            <button type="submit" class="btn search-icon">
-                <img src="../Content/images/searchIcon.png" />
+<form method="post" class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-5 my-md-3 mw-100 navbar-search">
+    <div class="input-group">
+        <input type="text" name="search" placeholder="Ürün veya kategori ara" class="inputCom form-control bg-light border-0 small" />
+        <div class="searchIcon input-group-append">
+            <button type="submit" class="btn btn-primary">
+                <i class="fas fa-search fa-sm"></i>
             </button>
         </div>
     </div>
 </form>
 
-<div class="row product-container">
+<div align="center" class="row product-container">
+
     @foreach (var item in Model.ListOfUrun)
     {
         <div class="col-md-3 col-sm-3 col-sx-6" style="margin-bottom:8px;">
-            <div class="thumbnail product-item" style="height:300px;">
-                <img class="img-responsive" style="cursor:pointer; align-content:center; height:300px; width:auto;" src="../UrunImage/@item.urunResmi" />
-                <div class="caption">
-                    <h5>@item.urunAdi</h5>
-                    <p>@item.fiyat</p>
-                    <p>
-                        @if (Session["user"] != null)
+            <div class="thumbnail product-item" align="center">
+                <img class="img-responsive" src="../UrunImage/@item.urunResmi" />
+
+            </div>
+            <div class="caption">
+
+                <h5 align="center">@item.urunAdi</h5>
+                <p align="center" class="product-item-price"> @item.fiyat TL </p>
+                <p align="center"> @item.aciklama</p>
+                <p>
+                    @if (Session["user"] != null)
+                    {
+                        if (item.miktar > 0)
                         {
-
-
-                            if (item.miktar > 0)
+                            using (Html.BeginForm("AddtoCart", "Home", new { urunid = item.urunId, url = "Categories" }, FormMethod.Post))
                             {
-                                using (Html.BeginForm("AddtoCart", "Home", new { urunid = item.urunId }, FormMethod.Post))
-                                {
-                                    <button type="submit" class="pull-right"><i class="fa fa-shopping-cart"></i></button>
-                                }
-
-                            <p>Available</p>
-                        }
-                        else
-                        {
-                            <p>not available </p>
-                        }
+                                <button type="submit" class="pull-right btn btn-primary js-scroll-trigger">Sepete Ekle<i style="margin-left:5px;" class="fa fa-shopping-cart"></i></button>
+                            }
+                        <p style="margin-top:8px;">Mevcut</p>
                     }
                     else
                     {
-                        <h4>Sepete ekleyebilmeniz için giriş yapınız</h4>
+                        <p style="margin-top:8px;">Mevcut Değil</p>
                     }
-                        </p>
-                        <div class="product-item-badge">
-                            @if (item.ozellik == true)
-                            {
-                                <p>New</p>
-                            }
-                            else
-                            {
-                                <p>old</p>
-                            }
-                        </div>
+                }
+                else
+                {
+                    <a>Sepete ekleyebilmeniz için giriş yapınız</a>
+                }
 
+                    <div class="product-item-badge">
+                        @if (item.ozellik == true)
+                        {
+                            <p>New</p>
+                        }
+                        else
+                        {
+                            <p>old</p>
+                        }
                     </div>
+                    </p>
                 </div>
-            </div>           
+          </div>
         }
 </div>
-
-<div class="row special-list">
-    <div class="col-lg-3 col-md-6 special-grid best-seller">
-        <div class="products-single fix">
-            <div class="box-img-hover">
-                <div class="type-lb">
-                    <p class="sale">Sale</p>
-                </div>
-                <img src="../Content/images/portfolio/thumbnails/b1.jpg" class="img-fluid" alt="Image">
-                <div class="mask-icon">
-                    <ul>
-                        <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
-                        <li><a href="#" data-toggle="tooltip" data-placement="right" title="Compare"><i class="fas fa-sync-alt"></i></a></li>
-                        <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
-                    </ul>
-                    <a class="cart" href="#">Add to Cart</a>
-                </div>
-            </div>
-            <div class="why-text">
-                <h4>Lorem ipsum dolor sit amet</h4>
-                <h5> $7.79</h5>
-            </div>
-        </div>
-    </div>
-
-    <div class="col-lg-3 col-md-6 special-grid top-featured">
-        <div class="products-single fix">
-            <div class="box-img-hover">
-                <div class="type-lb">
-                    <p class="new">New</p>
-                </div>
-                <img src="../Content/images/portfolio/thumbnails/b1.jpg" class="img-fluid" alt="Image">
-                <div class="mask-icon">
-                    <ul>
-                        <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
-                        <li><a href="#" data-toggle="tooltip" data-placement="right" title="Compare"><i class="fas fa-sync-alt"></i></a></li>
-                        <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
-                    </ul>
-                    <a class="cart" href="#">Add to Cart</a>
-                </div>
-            </div>
-            <div class="why-text">
-                <h4>Lorem ipsum dolor sit amet</h4>
-                <h5> $9.79</h5>
-            </div>
-        </div>
-    </div>
-
-    <div class="col-lg-3 col-md-6 special-grid top-featured">
-        <div class="products-single fix">
-            <div class="box-img-hover">
-                <div class="type-lb">
-                    <p class="sale">Sale</p>
-                </div>
-                <img src="../Content/images/portfolio/thumbnails/b1.jpg" class="img-fluid" alt="Image">
-                <div class="mask-icon">
-                    <ul>
-                        <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
-                        <li><a href="#" data-toggle="tooltip" data-placement="right" title="Compare"><i class="fas fa-sync-alt"></i></a></li>
-                        <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
-                    </ul>
-                    <a class="cart" href="#">Add to Cart</a>
-                </div>
-            </div>
-            <div class="why-text">
-                <h4>Lorem ipsum dolor sit amet</h4>
-                <h5> $10.79</h5>
-            </div>
-        </div>
-    </div>
-
-    <div class="col-lg-3 col-md-6 special-grid best-seller">
-        <div class="products-single fix">
-            <div class="box-img-hover">
-                <div class="type-lb">
-                    <p class="sale">Sale</p>
-                </div>
-                <img src="../Content/images/portfolio/thumbnails/b1.jpg" class="img-fluid" alt="Image">
-                <div class="mask-icon">
-                    <ul>
-                        <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
-                        <li><a href="#" data-toggle="tooltip" data-placement="right" title="Compare"><i class="fas fa-sync-alt"></i></a></li>
-                        <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
-                    </ul>
-                    <a class="cart" href="#">Add to Cart</a>
-                </div>
-            </div>
-            <div class="why-text">
-                <h4>Lorem ipsum dolor sit amet</h4>
-                <h5> $15.79</h5>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="container">
+<hr />
+<div align="center" style="width:8%; margin:auto;">
     <br />
-    @Html.PagedListPager(Model.ListOfUrun, page => Url.Action("Categories", new { page, search = Request.QueryString["search"] }))
+    @Html.PagedListPager(Model.ListOfUrun, page => Url.Action("Categories", new { page, search = Request.QueryString["search"], @class = "pagination" }))
 </div>
 
